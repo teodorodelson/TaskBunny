@@ -39,9 +39,18 @@
 
 .jumbotron {
   width: 500px;
-  height: 400px;
+  height: 500px;
   margin: auto;
-  margin-top: 200px !important;
+  margin-top: 180px !important;
+  background-color:lightcyan !important; 
+  
+}
+
+.jumbotron-reg {
+  width: 500px;
+  height: 600px;
+  margin: auto;
+  margin-top: 150px !important;
   background-color:lightcyan !important; 
   
 }

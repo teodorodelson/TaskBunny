@@ -8,6 +8,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import logo from "./../../assets/TB_LOGO.png";
 
 function LoginPage(props) {
   const [userCredentials, setCredentials] = useState({
@@ -69,7 +70,7 @@ function LoginPage(props) {
     <div className="jumbotron">
       <Form onSubmit={handleSubmit} onChange={handleChange}>
         <div className="form-label-title fontForTitles">
-          <h1>Task Bunny</h1>
+          <img src={logo} alt="Logo" class="center" />;
         </div>
         <br />
         <Form.Group controlId="username">
@@ -91,7 +92,7 @@ function LoginPage(props) {
         </Form.Group>
         <Link to="/register"> Not yet registered? click here to sign up!</Link>
         <Button variant="primary" type="submit" style={{ float: "right" }}>
-          Submit
+          Log In
         </Button>
       </Form>
     </div>
