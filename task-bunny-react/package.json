@@ -12,13 +12,7 @@
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-<<<<<<< HEAD
     "react-scripts": "3.4.1"
-=======
-    "react-scripts": "^3.4.1",
-    "react-toastify": "^6.0.5",
-    "toastify": "^2.0.0"
->>>>>>> 31309325a0d98764e8f04cecc2d943f9c9d34176
   },
   "scripts": {
     "start": "react-scripts start",
