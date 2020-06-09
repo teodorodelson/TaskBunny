@@ -4,11 +4,12 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import LoginPage from './components/login/LoginPage'
-import HomePage from './components/home/HomePage'
-import RegisterPage from './components/register/RegisterPage'
+import LoginPage from "./components/login/LoginPage";
+import HomePage from "./components/home/HomePage";
+import RegisterPage from "./components/register/RegisterPage";
 import Clienttask from "./components/ClientComponent/Clienttask";
-
+import AdminUsersPage from "./components/admin/AdminUsersPage";
+import AdminTaskPage from "./components/admin/AdminTaskPage";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path="/" component={LoginPage} exact />
           <Route path="/home" component={HomePage} exact />
           <Route path="/register" component={RegisterPage} exact />
+          <Route path="/admin-user" component={AdminUsersPage} exact />
+          <Route path="/admin-task" component={AdminTaskPage} exact />
           <Route path="/" component={Clienttask} exact />
           {/* <Route component={NotFoundPage} /> */}
         </Switch>
