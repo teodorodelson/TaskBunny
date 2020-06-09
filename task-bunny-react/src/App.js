@@ -3,9 +3,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+
 import LoginPage from './components/login/LoginPage'
 import HomePage from './components/home/HomePage'
 import RegisterPage from './components/register/RegisterPage'
+import Clienttask from "./components/ClientComponent/Clienttask";
+
 
 function App() {
   return (
