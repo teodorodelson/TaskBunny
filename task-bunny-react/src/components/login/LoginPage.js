@@ -8,7 +8,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import logo from "./../../assets/TB_LOGO.png";
+import logo from "./../../Assets/TB_LOGO.png";
 
 function LoginPage(props) {
   const [userCredentials, setCredentials] = useState({
