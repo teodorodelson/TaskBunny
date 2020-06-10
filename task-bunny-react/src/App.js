@@ -16,7 +16,7 @@ function App() {
       <Route path="/" component={LoginPage} exact />
           <Route path="/home" component={HomePage}  />
           <Route path="/register" component={RegisterPage}  />
-          <Route path="/" component={Clienttask}  />
+          
       <Route path="/provider page">
         <ProviderPage />
       </Route>
@@ -26,6 +26,7 @@ function App() {
       <Route path="/provider tasks">
         <ProviderTasks />
       </Route>
+      <Route path="/" component={Clienttask}  />
     </Switch>
   );
 }
