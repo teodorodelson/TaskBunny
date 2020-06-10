@@ -9,6 +9,7 @@ import LoginPage from "./components/login/LoginPage";
 import HomePage from "./components/home/HomePage";
 import RegisterPage from "./components/register/RegisterPage";
 import Clienttask from "./components/ClientComponent/Clienttask";
+<<<<<<< HEAD
 import ClientTaskPage from "./components/ClientComponent/ClientTaskPage";
 import ClientFeedback from "./components/ClientComponent/ClientFeedback";
 
@@ -32,6 +33,27 @@ function App() {
       <Route path="/viewtask" component={ClientTaskPage} />
       <Route path="/clientfeedback" component={ClientFeedback} />
     </Switch>
+=======
+import AdminUsersPage from "./components/admin/AdminUsersPage";
+import AdminTaskPage from "./components/admin/AdminTaskPage";
+
+function App() {
+  return (
+    <div className="container-fluid">
+      <BrowserRouter>
+        <ToastContainer autoClose={3000} hideProgressBar />
+        <Switch>
+          <Route path="/" component={LoginPage} exact />
+          <Route path="/home" component={HomePage} exact />
+          <Route path="/register" component={RegisterPage} exact />
+          <Route path="/admin-user" component={AdminUsersPage} exact />
+          <Route path="/admin-task" component={AdminTaskPage} exact />
+          <Route path="/" component={Clienttask} exact />
+          {/* <Route component={NotFoundPage} /> */}
+        </Switch>
+      </BrowserRouter>
+    </div>
+>>>>>>> adminRoles
   );
 }
 
