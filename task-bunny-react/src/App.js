@@ -10,6 +10,7 @@ import HomePage from "./components/home/HomePage";
 import RegisterPage from "./components/register/RegisterPage";
 import Clienttask from "./components/ClientComponent/Clienttask";
 import ClientTaskPage from "./components/ClientComponent/ClientTaskPage";
+import ClientFeedback from "./components/ClientComponent/ClientFeedback";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       </Route>
       <Route path="/createtask" component={Clienttask} />
       <Route path="/viewtask" component={ClientTaskPage} />
+      <Route path="/clientfeedback" component={ClientFeedback} />
     </Switch>
   );
 }
