@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.taskbunny.models.BankTransfers;
 import com.taskbunny.models.Users;
-import com.taskbunny.service.UsersService;
-
+import com.taskbunny.service.BankTransfersService;
 
 @Controller
 @ResponseBody
-public class UsersController {
+public class BankTransfersController {
+
+		@Autowired
+		BankTransfersService bts;
+		
+		@GetMapping("/banktransfers")
+		public List<BankTransfers> getAllBankTransfers(){
+			return bts.findAll();
+		}
 	
-	@Autowired
-	UsersService us;
-	
-	@GetMapping("/users")
-	public List<Users> getAllUsers(){
-		return us.findAll();		
-	}
-	
-	@PostMapping("/users")
-	public Users postUsers(@RequestBody Users users) {
-		us.saveUser(users);
-		return users;
-	}
+		@PostMapping("/banktransfers")
+		public BankTransfers postBankTransfers(@RequestBody BankTransfers bt) {
+			bts.saveBankTransfers(bt);
+			return bt;
+		}
 }

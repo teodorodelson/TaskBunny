@@ -33,23 +33,30 @@ public class Users implements Serializable{
 	@Column(name = "lastname")
 	private String lastname;
 	
-//	@Column(name = "datejoined")
-//	private Date datejoined;
-//	
-//	@Lob
-//	@Column(name = "picture")
-//	private byte[] picture;
+	@Column(name = "datejoined")
+	private Date datejoined;
+	
+	@Lob
+	@Column(name = "picture")
+	private byte[] picture;
+	
+	public Users() {}
 
-	public Users(String username, String password, String role, String firstname, String lastname) {
+	public Users(String username, String password, String role, String firstname, String lastname,
+			Date datejoined, byte[] picture) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.role = role;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.datejoined = datejoined;
+		this.picture = picture;
 	}
-	
-	public Users(int userid, String username, String password, String role, String firstname, String lastname) {
+
+
+	public Users(int userid, String username, String password, String role, String firstname, String lastname,
+			Date datejoined, byte[] picture) {
 		super();
 		this.userid = userid;
 		this.username = username;
@@ -57,7 +64,12 @@ public class Users implements Serializable{
 		this.role = role;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.datejoined = datejoined;
+		this.picture = picture;
 	}
+
+
+
 
 	public int getUserid() {
 		return userid;
@@ -107,21 +119,21 @@ public class Users implements Serializable{
 		this.lastname = lastname;
 	}
 
-//	public Date getDatejoined() {
-//		return datejoined;
-//	}
-//
-//	public void setDatejoined(Date datejoined) {
-//		this.datejoined = datejoined;
-//	}
-//
-//	public byte[] getPicture() {
-//		return picture;
-//	}
-//
-//	public void setPicture(byte[] picture) {
-//		this.picture = picture;
-//	}
+	public Date getDatejoined() {
+		return datejoined;
+	}
+
+	public void setDatejoined(Date datejoined) {
+		this.datejoined = datejoined;
+	}
+
+	public byte[] getPicture() {
+		return picture;
+	}
+
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
+	}
 	
 	
 }

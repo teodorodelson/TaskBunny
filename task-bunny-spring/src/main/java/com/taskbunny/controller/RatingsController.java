@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.taskbunny.models.Users;
-import com.taskbunny.service.UsersService;
-
+import com.taskbunny.models.Ratings;
+import com.taskbunny.service.RatingsService;
 
 @Controller
 @ResponseBody
-public class UsersController {
+public class RatingsController {
 	
 	@Autowired
-	UsersService us;
+	RatingsService rs;
 	
-	@GetMapping("/users")
-	public List<Users> getAllUsers(){
-		return us.findAll();		
+	@GetMapping("/ratings")
+	public List<Ratings> getAllRatings(){
+		return rs.findAll();
 	}
 	
-	@PostMapping("/users")
-	public Users postUsers(@RequestBody Users users) {
-		us.saveUser(users);
-		return users;
+	@PostMapping("/ratings")
+	public Ratings postRatings(@RequestBody Ratings ratings) {
+		rs.saveRatings(ratings);
+		return ratings;
 	}
+	
 }

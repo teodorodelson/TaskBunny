@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.taskbunny.models.Users;
-import com.taskbunny.service.UsersService;
-
+import com.taskbunny.models.Tasks;
+import com.taskbunny.service.TasksService;
 
 @Controller
 @ResponseBody
-public class UsersController {
-	
+public class TasksController {
+
 	@Autowired
-	UsersService us;
+	TasksService ts;
 	
-	@GetMapping("/users")
-	public List<Users> getAllUsers(){
-		return us.findAll();		
+	@GetMapping("/tasks")
+	public List<Tasks> findAllTask(){
+		return ts.findAll();
 	}
 	
-	@PostMapping("/users")
-	public Users postUsers(@RequestBody Users users) {
-		us.saveUser(users);
-		return users;
+	@PostMapping("/tasks")
+	public Tasks postTasks(@RequestBody Tasks tasks) {
+		ts.saveTask(tasks);
+		return tasks;
 	}
+	
 }
