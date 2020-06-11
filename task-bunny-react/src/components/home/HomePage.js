@@ -52,8 +52,8 @@ export default function HomePage() {
 
           <br />
         </Row>
-        <hr/>
-        <br/>
+        <hr />
+        <br />
         <Row>
           <CardColumns>
             <Card>
