@@ -29,5 +29,6 @@ public class BankTransfersController {
 		public BankTransfers postBankTransfers(@RequestBody BankTransfers bt) {
 			bts.saveBankTransfers(bt);
 			return bt;
+			
 		}
 }
