@@ -18,7 +18,8 @@ export default function TaskView(props) {
   return (
     <>
       <h1>Task</h1>
-      <TaskInFocus task={task} />
+      {/* <TaskInFocus task={task} /> */}
+      <TaskInFocus /> {/* Remove */}
     </>
   );
 }
