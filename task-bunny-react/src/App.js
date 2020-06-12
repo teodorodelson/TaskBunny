@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import ProviderPage from "./Pages/providerPage";
 import ClientPage from "./Pages/clientPage";
 import NotFoundPage from "./Pages/NotFoundPage";
@@ -14,6 +14,7 @@ import TaskView from "./components/tasks/TaskView";
 import CategoryPage from "./components/categories/CategoryPage";
 import ClientTaskPage from "./components/ClientComponent/ClientTaskPage";
 import ClientFeedback from "./components/ClientComponent/ClientFeedback";
+import ProviderFeedback from "./components/ClientComponent/ProviderFeedback";
 import AdminUsersPage from "./components/admin/AdminUsersPage";
 import AdminTaskPage from "./components/admin/AdminTaskPage";
 import { ToastContainer } from "react-toastify";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" component={LoginPage} exact />
         <Route path="/home" component={HomePage} exact />
         <Route path="/register" component={RegisterPage} exact />
+        <Route path="/providerfeedback" component={ProviderFeedback} />
         <Route path="/admin-user" component={AdminUsersPage} exact />
         <Route path="/admin-task" component={AdminTaskPage} exact />
         {/* <Route path="/" component={Clienttask} exact /> */}
