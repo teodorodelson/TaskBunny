@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import bgtask from "./bg_task.jpg";
+import axios from "axios";
 const divStyle = {
   width: "100%",
   height: "100%",
@@ -8,7 +9,42 @@ const divStyle = {
 };
 
 export default class Clienttask extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: "",
+      category: "",
+      description: "",
+      status: "pending",
+      amountpaid: 0,
+      clientid: 13,
+      providerid: 2,
+      // taskid: 9,
+    };
+  }
+
+  changeHanlder = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  submitHandler = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+    axios
+      .post("http://localhost:8081/tasks", this.state)
+      .then((response) => {
+        console.log(response);
+        // toast.success("Coffee Successfully Created");
+        // this.props.history.push("/coffee");
+      })
+      .catch((err) => {
+        console.log("Somethings wrong");
+        console.log(err);
+      });
+  };
+  // http://13.58.157.19:8081/tasks"
   render() {
+    const { name, category, description, amountpaid } = this.state;
     return (
       <div style={divStyle}>
         <div
@@ -30,8 +66,8 @@ export default class Clienttask extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    name="coffee_name"
-                    value=""
+                    name="name"
+                    value={name}
                     onChange={this.changeHanlder}
                     required
                   />
@@ -42,11 +78,16 @@ export default class Clienttask extends Component {
                   Category
                 </label>
                 <div className="col-lg-9">
-                  <select class="form-control">
-                    <option>Laundry</option>
-                    <option>House</option>
-                    <option>Gardening</option>
-                    <option>Others</option>
+                  <select
+                    className="form-control"
+                    value={category}
+                    name="category"
+                    onChange={this.changeHanlder}
+                  >
+                    <option value="Laundry">Laundry</option>
+                    <option value="House">House</option>
+                    <option value="Gardening">Gardening</option>
+                    <option value="Others">Others</option>
                   </select>
                   {/* <input
                     className="form-control"
@@ -63,7 +104,13 @@ export default class Clienttask extends Component {
                   Task Description
                 </label>
                 <div className="col-lg-9">
-                  <textarea className="form-control" rows="5"></textarea>
+                  <textarea
+                    className="form-control"
+                    rows="5"
+                    name="description"
+                    value={description}
+                    onChange={this.changeHanlder}
+                  ></textarea>
                   {/* <input
                     className="form-control"
                     type="text"
@@ -82,8 +129,8 @@ export default class Clienttask extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    name="total_calories"
-                    value="0"
+                    name="amountpaid"
+                    value={amountpaid}
                     onChange={this.changeHanlder}
                     required
                   />
