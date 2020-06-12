@@ -66,23 +66,23 @@ export default function TaskInFocus(props) {
                 </p>
                 <p>{dummyTask.description}</p>
                 <p style={{ color: "green" }}>{dummyTask.duration}</p>
-                {/* <p className="badge badge-warning" style={{ fontSize: "15px" }}>
-              {dummyTask.rating.toFixed(1)}
-            </p> */}
+                <Link
+                  to={{
+                    pathname: `/provider tasks`,
+                  }}
+                >
+                  <button
+                    className="btn btn-success"
+                    style={{ float: "right" }}
+                  >
+                    Pick Up Task
+                  </button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
         </Row>
       </div>
-      <Link
-        to={{
-          pathname: `/provider tasks`,
-        }}
-      >
-        <button className="btn btn-success" style={{ float: "right" }}>
-          Pick Up Task
-        </button>
-      </Link>
     </>
   );
 }

@@ -7,7 +7,8 @@ export default function TaskPage(props) {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/${props.location.state.category}`)
+    /* fetch(`http://13.58.157.19:8081/tasks/${props.location.state.category}`) */
+    fetch(`http://13.58.157.19:8081/tasks/`)
       .then((response) => response.json())
       .then((data) => {
         setTasks(data);
@@ -20,10 +21,10 @@ export default function TaskPage(props) {
       <Container>
         <Row>
           <h1>Tasks: {props.location.state.category.category}</h1>
-          {/*{tasks.map((task) => {
+          {tasks.map((task) => {
             return <TaskList task={task} />;
-          })} */}
-          <TaskList /> {/* Remove */}
+          })}
+          {/* <TaskList /> */} {/* Remove */}
         </Row>
       </Container>
     </>

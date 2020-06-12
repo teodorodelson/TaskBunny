@@ -6,7 +6,7 @@ export default function TaskView(props) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/${props.location.state.task.taskID}`
+      `http://13.58.157.19:8081/${props.location.state.task.taskID}`
     ) /* Need to click on a link for this to work correctly */
       .then((response) => response.json())
       .then((data) => {
@@ -18,8 +18,7 @@ export default function TaskView(props) {
   return (
     <>
       <h1>Task</h1>
-      {/* <TaskInFocus task={task} /> */}
-      <TaskInFocus /> {/* Remove */}
+      <TaskInFocus task={task} />
     </>
   );
 }

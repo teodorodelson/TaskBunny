@@ -15,31 +15,53 @@ export default function TaskList(props) {
   }); /* Dummy Data */
   return (
     <>
-      {/* <Col md={12}>
+      <Col md={12} style={{ marginTop: "20px" }}>
         <Card>
-          <p>{props.task.name}</p>
-          <p>{props.task.client}</p>
-          <p>{props.task.description}</p>
-          <p>{props.task.price}</p>
-          <p>{props.task.category}</p>
-          <p>{props.task.duration}</p>
-          <Link
-            to={{
-              pathname: `/task/${props.task.taskID}`,
-              state: { task: props.task },
-            }}
-          >
-            <button>View</button>
-          </Link>
+          <div className="card-header">{props.task.category}</div>
+          <Card.Body>
+            <h3 className="card-title" style={{ display: "inline-block" }}>
+              {props.task.name}
+            </h3>
+            <p
+              style={{
+                display: "inline-block",
+                float: "right",
+                fontWeight: "bold",
+                fontSize: "27px",
+              }}
+            >
+              ${props.task.amountpaid}
+            </p>
+            <p>{props.task.description}</p>
+            <p style={{ display: "inline-block", color: "green" }}>
+              {dummyTask.duration}
+            </p>
+            <Link
+              to={{
+                pathname: `/task/${props.task.taskid}`,
+                state: { task: props.task },
+              }}
+            >
+              <button
+                className="btn btn-danger"
+                style={{ display: "inline-block", float: "right" }}
+              >
+                View
+              </button>
+            </Link>
+          </Card.Body>
+          <Card.Footer>
+            <small>{props.task.clientid}</small>
+          </Card.Footer>
         </Card>
-      </Col> */}
+      </Col>
 
       {/* How do I take the id of the task and only render that specifics tasks details? 
       Do I need to create another route on App.js?
       */}
 
       {/* ---------------------------------------------- */}
-      <Col md={12}>
+      {/* <Col md={12}>
         <Card>
           <div className="card-header">{dummyTask.category}</div>
           <Card.Body>
@@ -78,9 +100,11 @@ export default function TaskList(props) {
             <small>{dummyTask.client}</small>
           </Card.Footer>
         </Card>
-      </Col>
+      </Col> */}
     </>
   );
 }
 
 /* Put desciption in container so it doesn't go all the way over to the other side. */
+/* Need duration to be in the table */
+/* Render only part of the description not the whole thing */
