@@ -4,7 +4,6 @@ import ProviderPage from "./Pages/providerPage";
 import ClientPage from "./Pages/clientPage";
 import ProviderTasks from "./Pages/tasksOfProvider";
 import HomePage from "./Pages/homePage";
-import "./App.css";
 
 function App() {
   return (
