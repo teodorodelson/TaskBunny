@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import serviceProviderImage from "../Assets/ServiceProvider.jpg";
 
-export default function providerPage() {
+export default function providerPage(props) {
   return (
     <React.Fragment>
       <div class="container-fluid">
@@ -12,7 +12,7 @@ export default function providerPage() {
             <div class="card m-2" style={{ width: "250px", height: "500px" }}>
               <img
                 class="card-img-top"
-                src={serviceProviderImage}
+                src={props.file}
                 alt="Service Provider Profile Pic"
                 style={{ height: "300px", width: "250px" }}
               />

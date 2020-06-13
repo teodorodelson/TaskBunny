@@ -7,13 +7,13 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
 
-import logo_0 from "./../../assets/carousel_01.jpg";
-import logo_1 from "./../../assets/carousel_02.jpg";
-import logo_2 from "./../../assets/carousel_03.jpg";
-import logo from "./../../assets/TB_LOGO.png";
-import card_0 from "./../../assets/card_01.jpg";
-import card_1 from "./../../assets/card_02.jpg";
-import card_2 from "./../../assets/card_03.jpg";
+import logo_0 from "./../../Assets/carousel_01.jpg";
+import logo_1 from "./../../Assets/carousel_02.jpg";
+import logo_2 from "./../../Assets/carousel_03.jpg";
+import logo from "./../../Assets/TB_LOGO.png";
+import card_0 from "./../../Assets/card_01.jpg";
+import card_1 from "./../../Assets/card_02.jpg";
+import card_2 from "./../../Assets/card_03.jpg";
 
 export default function HomePage() {
   return (
@@ -52,8 +52,8 @@ export default function HomePage() {
 
           <br />
         </Row>
-        <hr/>
-        <br/>
+        <hr />
+        <br />
         <Row>
           <CardColumns>
             <Card>
