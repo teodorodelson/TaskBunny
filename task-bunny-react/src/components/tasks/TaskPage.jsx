@@ -14,7 +14,6 @@ export default function TaskPage(props) {
     console.log(token);
     fetch(`http://13.58.157.19:8081/tasks`, {
       method: "GET",
-      credentials: "include",
       //might not need
       headers: {
         Authorization: `Bearer ${token}`,

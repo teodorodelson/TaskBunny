@@ -36,8 +36,8 @@ function App() {
           {/* <Route path="/" component={Clienttask} exact /> */}
           {/* <Route component={NotFoundPage} /> */}
 
-          <Route path="/image update">
-            <ChangeImage />
+          <Route path="/provider page">
+            <ProviderPage />
           </Route>
 
           <Route path="/client page">

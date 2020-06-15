@@ -1,5 +1,3 @@
-import ProviderPage from "./providerPage";
-
 import React, { useState } from "react";
 
 export default function ImageUpdate() {
@@ -11,7 +9,6 @@ export default function ImageUpdate() {
   return (
     <>
       <input type="file" name="file" onChange={handleChange} />
-      <ProviderPage />
     </>
   );
 }
