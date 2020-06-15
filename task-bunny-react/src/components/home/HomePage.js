@@ -23,7 +23,7 @@ export default function HomePage() {
           <p>
             <br />
             <div className="welcomeline">
-              <img src={logo} alt="Logo" class="center" />;
+              <img src={logo} alt="Logo" className="center" />;
               <hr />
               <h2>
                 Have more time for yourself, let someone else do your other

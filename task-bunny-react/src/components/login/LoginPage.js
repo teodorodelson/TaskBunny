@@ -67,6 +67,7 @@ function LoginPage(props) {
     if (true) {
       fetch("http://13.58.157.19:8081/authenticate", {
         method: "POST",
+
         body: JSON.stringify({
           // Username of a user on the WordPress website in which the REST API request
           // is being made to.
@@ -97,7 +98,7 @@ function LoginPage(props) {
     <div className="jumbotron">
       <Form onSubmit={handleSubmit} onChange={handleChange}>
         <div className="form-label-title fontForTitles">
-          <img src={logo} alt="Logo" class="center" />;
+          <img src={logo} alt="Logo" className="center" />;
         </div>
         <br />
         <Form.Group controlId="username">
@@ -128,21 +129,21 @@ function LoginPage(props) {
 
 export default LoginPage;
 
-/* function getMe(e) {
-    e.preventDefault();
-    var token = JSON.parse(localStorage.getItem('token'));
-    console.log(`Authorization=Bearer ${token}`)
-    fetch('/users/me', {
-        method: 'GET',
-        "content-type": "application/json", //might not need
-        headers: {
-            'Authorization': 'Bearer ' + token
-        }
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            // window.location.href = 'http://localhost:3000/dashboard';
-        })
-        .catch(err => { console.log(err) })
-}  */
+//  function getMe(e) {
+//     e.preventDefault();
+//     var token = JSON.parse(localStorage.getItem('token'));
+//     console.log(`Authorization=Bearer ${token}`)
+//     fetch('/users/me', {
+//         method: 'GET',
+//         "content-type": "application/json", //might not need
+//         headers: {
+//             'Authorization': 'Bearer ' + token
+//         }
+//     })
+//         .then(res => res.json())
+//         .then(data => {
+//             console.log(data)
+//             // window.location.href = 'http://localhost:3000/dashboard';
+//         })
+//         .catch(err => { console.log(err) })
+// }
