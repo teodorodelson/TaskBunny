@@ -100,3 +100,42 @@ function LoginPage(props) {
 }
 
 export default LoginPage;
+
+function handlesSubmit() {}
+
+/* function getMe(e) {
+    e.preventDefault();
+    var token = JSON.parse(localStorage.getItem('token'));
+    console.log(`Authorization=Bearer ${token}`)
+    fetch('/users/me', {
+        method: 'GET',
+        "content-type": "application/json", //might not need
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            // window.location.href = 'http://localhost:3000/dashboard';
+        })
+        .catch(err => { console.log(err) })
+}  */
+
+/* fetch( 'http://example.com/wp-json/jwt-auth/v1/token', {
+    method: 'POST',
+    body: JSON.stringify( {
+        // Username of a user on the WordPress website in which the REST API request
+        // is being made to.
+        username: 'user',
+        // And the above user's password.
+        password: 'pass'
+    } ),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+} )
+.then( res => res.json() )
+.then( res => console.log( res.token ) ); */
+
+/* localStorage.setItem('token', data.token) */

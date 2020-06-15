@@ -2,13 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import promise from "redux-promise";
+import createLogger from "redux-logger";
+import allReducers from "./reducers";
 import "react-toastify/dist/ReactToastify.css";
 import * as serviceWorker from "./serviceWorker";
+
+const logger = createLogger();
+const store = createStore(allReducers, applyMiddleware(thunk, promise, logger));
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
