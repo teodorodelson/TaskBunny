@@ -16,10 +16,10 @@ export default class Clienttask extends Component {
       name: "",
       category: "",
       description: "",
-      status: "pending",
+      status: "done",
       amountpaid: 0,
       clientid: 13,
-      providerid: 2,
+      providerid: 0,
       // taskid: 9,
     };
   }
@@ -27,11 +27,12 @@ export default class Clienttask extends Component {
   changeHanlder = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   submitHandler = (event) => {
     event.preventDefault();
     console.log(this.state);
     axios
-      .post("http://localhost:8081/tasks", this.state)
+      .post("http://13.58.157.19:8081/tasks", this.state)
       .then((response) => {
         console.log(response);
         // toast.success("Coffee Successfully Created");

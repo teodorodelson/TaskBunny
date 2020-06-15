@@ -7,12 +7,28 @@ const divStyle = {
 };
 
 export default class ClientTaskPage extends Component {
+  state = {
+    tasks: [],
+  };
+
+  componentDidMount() {
+    fetch("http://13.58.157.19:8081/tasks")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          tasks: data,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  changeDone() {
+    console.log();
+  }
   render() {
     return (
       <div style={divStyle}>
-        <h1 style={{ marginBottom: "2%", marginTop: "2%" }}>
-          Client Task List : To be removed
-        </h1>
         <div style={{ width: "80%", margin: "auto" }}>
           <h1 style={{ marginBottom: "2%", marginTop: "2%" }}>My Task List</h1>
           <table
@@ -28,34 +44,58 @@ export default class ClientTaskPage extends Component {
                 <th className="th-lg">Task Category</th>
                 <th className="th-lg">Status</th>
                 <th className="th-lg">Price</th>
+                <th className="th-lg">Provider</th>
                 <th className="th-lg">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              {/* <tr>
                 <td>420</td>
                 <td>My Laundry</td>
                 <td>Laundy</td>
                 <td>In progress</td>
                 <td>10</td>
-                {/* if statement if not completed then it would display something */}
+                if statement if not completed then it would display something
                 <td>
                   <button className="btn btn-danger">Cancel Request</button>
                   <button className="btn btn-success">Done </button>
                 </td>
-              </tr>
-              {/* {this.state.coffees.map((coffee) => {
-                return (
-                  <tr key={coffee.id}>
-                    <td>{coffee.id}</td>
-                    <td>{coffee.coffee_name}</td>
-                    <td>{coffee.shots_of_espresso}</td>
-                    <td>{coffee.container}</td>
-                    <td>{coffee.total_calories}</td>
-                    <td>{coffee.price}</td>
-                  </tr>
-                );
-              })} */}
+              </tr> */}
+              {this.state.tasks.map((task) => {
+                if (task.status === "pending") {
+                  return (
+                    <tr key={task.taskid}>
+                      <td>{task.taskid}</td>
+                      <td>{task.name}</td>
+                      <td>{task.category}</td>
+                      <td>{task.status}</td>
+                      <td>{task.amountpaid}</td>
+                      <td>{task.providerid}</td>
+                      <td>
+                        <button className="btn btn-danger">Cancel</button>
+                        <button
+                          className="btn btn-success"
+                          onClick={this.changeDone}
+                        >
+                          Done{" "}
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                } else if (task.status === "done") {
+                  return (
+                    <tr key={task.taskid}>
+                      <td>{task.taskid}</td>
+                      <td>{task.name}</td>
+                      <td>{task.category}</td>
+                      <td>{task.status}</td>
+                      <td>{task.amountpaid}</td>
+                      <td>{task.providerid}</td>
+                      <td>Complete</td>
+                    </tr>
+                  );
+                }
+              })}
             </tbody>
           </table>
         </div>

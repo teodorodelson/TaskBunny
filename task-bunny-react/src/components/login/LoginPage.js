@@ -52,19 +52,46 @@ function LoginPage(props) {
     return false;
   }
 
-  //   function handleSubmit(event) {
-  //     event.preventDefault();
-  //     if (isValidUser()) {
-  //       toast.success("Log In Successful");
-  //       props.history.push("/home");
-  //     } else {
-  //       toast.error("Invalid username/password");
-  //     }
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   if (isValidUser()) {
+  //     toast.success("Log In Successful");
+  //     props.history.push("/home");
+  //   } else {
+  //     toast.error("Invalid username/password");
   //   }
+  // }
 
   function handleSubmit(event) {
-    props.history.push("/home");
+    event.preventDefault();
+    if (true) {
+      fetch("http://13.58.157.19:8081/authenticate", {
+        method: "POST",
+        body: JSON.stringify({
+          // Username of a user on the WordPress website in which the REST API request
+          // is being made to.
+          username: userCredentials.username,
+          // And the above user's password.
+          password: userCredentials.password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("token", res.jwt);
+        });
+
+      toast.success("Log In Successful");
+      props.history.push("/home");
+    }
   }
+
+  // function handleSubmit(event) {
+  //   props.history.push("/home");
+  // }
 
   return (
     <div className="jumbotron">
@@ -101,8 +128,6 @@ function LoginPage(props) {
 
 export default LoginPage;
 
-function handlesSubmit() {}
-
 /* function getMe(e) {
     e.preventDefault();
     var token = JSON.parse(localStorage.getItem('token'));
@@ -121,21 +146,3 @@ function handlesSubmit() {}
         })
         .catch(err => { console.log(err) })
 }  */
-
-/* fetch( 'http://example.com/wp-json/jwt-auth/v1/token', {
-    method: 'POST',
-    body: JSON.stringify( {
-        // Username of a user on the WordPress website in which the REST API request
-        // is being made to.
-        username: 'user',
-        // And the above user's password.
-        password: 'pass'
-    } ),
-    headers: {
-        'Content-Type': 'application/json'
-    }
-} )
-.then( res => res.json() )
-.then( res => console.log( res.token ) ); */
-
-/* localStorage.setItem('token', data.token) */

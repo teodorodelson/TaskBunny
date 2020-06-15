@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import bg_task from "../ClientComponent/bg_task.jpg";
+import axios from "axios";
 
 const left = {
   height: "100%",
@@ -33,16 +34,47 @@ const divStyle = {
 };
 
 export default class ProviderFeedback extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      clientid: 13,
+      providerid: 2,
+      feedback: "",
+      ratings: "",
+    };
+  }
+
+  changeHanlder = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  submitHandler = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+    axios
+      .post("http://13.58.157.19:8081/ratings", this.state)
+      .then((response) => {
+        console.log(response);
+        // toast.success("Coffee Successfully Created");
+        // this.props.history.push("/coffee");
+      })
+      .catch((err) => {
+        console.log("Somethings wrong");
+        console.log(err);
+      });
+  };
+
   render() {
+    const { feedback, ratings } = this.state;
     return (
       <div>
         <div style={left}>
           <div style={{ marginTop: "5%" }}>
-            <h3>Client Feedback Page</h3>
+            <h3>Provider Feedback Page</h3>
             <div className="card" style={{ width: "18rem" }}>
               <img src={bg_task} alt="..." className=" card-img-top "></img>
               <div className="card-body">
-                <p className="card-text">Name of Provider</p>
+                <p className="card-text">Name of Client</p>
                 {/* <div class="card-header">Featured</div> */}
               </div>
             </div>
@@ -50,7 +82,7 @@ export default class ProviderFeedback extends Component {
         </div>
 
         <div style={right}>
-          <h3>Request form</h3>
+          <h3>Feedback form</h3>
           <div style={divStyle}>
             <div
               className="card card-outline-secondary"
@@ -58,7 +90,7 @@ export default class ProviderFeedback extends Component {
             >
               <div className="card-header" style={{ backgroundColor: "cream" }}>
                 <h3 className="mb-0" style={{ textAlign: "center" }}>
-                  Rate your experience with this provider
+                  Rate your experience with this client
                 </h3>
               </div>
               <div className="card-body">
@@ -68,7 +100,13 @@ export default class ProviderFeedback extends Component {
                       Comments and Feedbacks
                     </label>
                     <div className="col-lg-9">
-                      <textarea className="form-control" rows="5"></textarea>
+                      <textarea
+                        className="form-control"
+                        rows="5"
+                        name="feedback"
+                        value={feedback}
+                        onChange={this.changeHanlder}
+                      ></textarea>
                       {/* <input
                     className="form-control"
                     type="text"
@@ -79,7 +117,7 @@ export default class ProviderFeedback extends Component {
                   /> */}
                     </div>
                   </div>
-                  <small textAlign="center">
+                  <small style={{ textAlign: "center" }}>
                     Rating: 5 is the highest rating and 1 is the lowest
                   </small>
                   <div className="form-group row">
@@ -92,8 +130,8 @@ export default class ProviderFeedback extends Component {
                         type="number"
                         max="5"
                         min="1"
-                        name="total_calories"
-                        // value=""
+                        name="ratings"
+                        value={ratings}
                         onChange={this.changeHanlder}
                         required
                       />
