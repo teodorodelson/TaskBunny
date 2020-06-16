@@ -5,70 +5,90 @@ import Axios from "axios";
 import JWTD from "jwt-decode";
 
 export default function ProviderPage() {
+  const [providerID, setProviderID] = useState("");
   const [earnings, setEarnings] = useState("");
   const [tasks, setTasks] = useState("");
-  const [providerID, setProviderID] = useState();
 
   const token = localStorage.getItem("token");
   const username = JWTD(token).sub;
 
-  Axios.get("http://13.58.157.19:8081/users/username/" + username, {
+  Axios.get("http://13.58.157.19:8081/users/userByname/" + username, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).then((result) => setProviderID(result.data));
+  })
+    .then((result) => setProviderID(result.data))
+    .catch((err) => console.log("error username:" + err));
 
   Axios.get("http://13.58.157.19:8081/tasks/totalEarnings/" + providerID, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).then((result) => setEarnings(result.data));
+  })
+    .then((result) => setEarnings(result.data))
+    .catch((err) => console.log("error totalearnings:" + err));
 
   Axios.get("http://13.58.157.19:8081/tasks/totaltasks/" + providerID, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).then((result) => setTasks(result.data));
+  })
+    .then((result) => setTasks(result.data))
+    .catch((err) => console.log("error totaltasks:" + err));
+  ////////////////////////////////////////////////////////////////////////////////
+  /*   Axios.get("http://13.58.157.19:8081/role/" + providerID, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((result) => localStorage.setItem("role", result.data))
+    .catch((err) => console.log("error role:" + err)); */
 
   return (
     <React.Fragment>
-      <div class="container-fluid">
+      <button type="submit">Button to provider page</button>
+      <div className="container-fluid">
         <div className="display-4">Service Provider Profile</div>
-        <div class="row">
-          <div class="col-3">
-            <div class="card m-2" style={{ width: "250px", height: "500px" }}>
+        <div className="row">
+          <div className="col-3">
+            <div
+              className="card m-2"
+              style={{ width: "250px", height: "500px" }}
+            >
               <img
-                class="card-img-top"
+                className="card-img-top"
                 src={serviceProviderImage}
                 alt="Service Provider Profile Pic"
                 style={{ height: "300px", width: "250px" }}
               />
-              <div class="card-body">
-                <h5 class="card-title">William O.</h5>
-                <p class="card-text">
+              <div className="card-body">
+                <h5 className="card-title">William O.</h5>
+                <p className="card-text">
                   I'm a professional laundry man, with 15 years of experience in
                   laundry services.
                 </p>
-                <span class="badge badge-success"> Rating : 5.0</span>
+                <span className="badge badge-success"> Rating : 5.0</span>
               </div>
             </div>
           </div>
-          <div class="col-md">
-            <ul class="list-group m-2">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div className="col-md">
+            <ul className="list-group m-2">
+              <li className="list-group-item d-flex justify-content-between align-items-center">
                 Total Task Completed
-                <span class="badge badge-primary badge-pill">{tasks}</span>
+                <span className="badge badge-primary badge-pill">{tasks}</span>
               </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
+              <li className="list-group-item d-flex justify-content-between align-items-center">
                 Total Money Earned
-                <span class="badge badge-primary badge-pill">${earnings}</span>
+                <span className="badge badge-primary badge-pill">
+                  ${earnings}
+                </span>
               </li>
             </ul>
-            <button type="button" class="btn btn-success m-2 float-right">
+            <button type="button" className="btn btn-success m-2 float-right">
               Transfer Money
             </button>
           </div>
-          <div class="col-sm"></div>
+          <div className="col-sm"></div>
         </div>
       </div>
     </React.Fragment>

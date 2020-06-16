@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
+  const role = localStorage.getItem("role");
+  const greeting = `Welcome ${role}`;
   const activeStyle = { color: "#fffdd0", fontWeight: "bold" };
+
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
@@ -21,13 +24,11 @@ export default function Navbar() {
         >
           Tasks
         </NavLink>
-        <NavLink
-          className="nav-link"
-          to="/client page"
-          activeStyle={activeStyle}
-        >
-          Profile
+
+        <NavLink className="nav-link" to={role} activeStyle={activeStyle}>
+          {greeting}
         </NavLink>
+
         <NavLink to="/" className="nav-link" activeStyle={activeStyle} exact>
           Login
         </NavLink>

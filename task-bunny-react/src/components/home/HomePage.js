@@ -14,8 +14,11 @@ import logo from "./../../Assets/TB_LOGO.png";
 import card_0 from "./../../Assets/card_01.jpg";
 import card_1 from "./../../Assets/card_02.jpg";
 import card_2 from "./../../Assets/card_03.jpg";
+import Role from "../../Pages/role";
 
 export default function HomePage() {
+  const isAvailable = localStorage.getItem("token");
+  if (isAvailable) return <Role />;
   return (
     <>
       <Container>

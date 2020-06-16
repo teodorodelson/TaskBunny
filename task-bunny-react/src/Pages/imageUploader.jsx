@@ -8,7 +8,7 @@ export default function ImageUpdate() {
 
   return (
     <>
-      <input type="file" name="file" onChange={handleChange} />
+      <input type="file" onChange={handleChange} />
     </>
   );
 }

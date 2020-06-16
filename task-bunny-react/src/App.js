@@ -18,7 +18,6 @@ import AdminUsersPage from "./components/admin/AdminUsersPage";
 import AdminTaskPage from "./components/admin/AdminTaskPage";
 import Navbar from "./components/common/Navbar";
 import { ToastContainer } from "react-toastify";
-import ChangeImage from "./Pages/imageUploader";
 
 function App() {
   return (
@@ -36,13 +35,14 @@ function App() {
           {/* <Route path="/" component={Clienttask} exact /> */}
           {/* <Route component={NotFoundPage} /> */}
 
-          <Route path="/provider page">
+          <Route path="/provider">
             <ProviderPage />
           </Route>
 
-          <Route path="/client page">
+          <Route path="/client">
             <ClientPage />
           </Route>
+
           <Route path="/provider tasks">
             <ProviderTasks />
           </Route>
