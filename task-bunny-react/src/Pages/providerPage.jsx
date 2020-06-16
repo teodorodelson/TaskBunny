@@ -2,20 +2,33 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import serviceProviderImage from "../Assets/ServiceProvider.jpg";
 import Axios from "axios";
+import JWTD from "jwt-decode";
 
 export default function ProviderPage() {
   const [earnings, setEarnings] = useState("");
   const [tasks, setTasks] = useState("");
+  const [providerID, setProviderID] = useState();
 
-  const providerid = 3;
+  const token = localStorage.getItem("token");
+  const username = JWTD(token).sub;
 
-  Axios.get(
-    "http://13.58.157.19:8081/tasks/totalEarnings/" + providerid
-  ).then((result) => setEarnings(result.data));
+  Axios.get("http://13.58.157.19:8081/users/username/" + username, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((result) => setProviderID(result.data));
 
-  Axios.get("http://13.58.157.19:8081/tasks/totalEarnings/2").then((result) =>
-    setTasks(result.data)
-  );
+  Axios.get("http://13.58.157.19:8081/tasks/totalEarnings/" + providerID, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((result) => setEarnings(result.data));
+
+  Axios.get("http://13.58.157.19:8081/tasks/totaltasks/" + providerID, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((result) => setTasks(result.data));
 
   return (
     <React.Fragment>
