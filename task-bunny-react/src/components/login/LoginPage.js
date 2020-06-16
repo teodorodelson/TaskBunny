@@ -23,45 +23,6 @@ function LoginPage(props) {
     });
   }
 
-  function isValidUser() {
-    const users = [
-      {
-        username: "admin",
-        password: "admin",
-      },
-      {
-        username: "sansa",
-        password: "stark",
-      },
-      {
-        username: "theon",
-        password: "greyjoy",
-      },
-    ];
-
-    for (var i = 0; i < users.length; i++) {
-      console.log(users[i]);
-      console.log(userCredentials);
-      if (
-        users[i].username === userCredentials.username &&
-        users[i].password === userCredentials.password
-      ) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   if (isValidUser()) {
-  //     toast.success("Log In Successful");
-  //     props.history.push("/home");
-  //   } else {
-  //     toast.error("Invalid username/password");
-  //   }
-  // }
-
   function handleSubmit(event) {
     event.preventDefault();
     if (true) {
@@ -89,10 +50,6 @@ function LoginPage(props) {
       props.history.push("/home");
     }
   }
-
-  // function handleSubmit(event) {
-  //   props.history.push("/home");
-  // }
 
   return (
     <div className="jumbotron">
