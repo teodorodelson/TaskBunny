@@ -22,6 +22,7 @@ export default function TaskPage(props) {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log("Data", data);
         setTasks(data);
       })
       .catch((err) => console.log(err));

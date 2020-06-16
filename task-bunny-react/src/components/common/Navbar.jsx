@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
 import React, { useState, useEffect } from "react";
->>>>>>> a84ecda136f1c306fcae5867bad7a0ffb78e75dd
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -11,8 +7,6 @@ export default function Navbar() {
   const greeting = `Welcome ${role}`;
   const activeStyle = { color: "#fffdd0", fontWeight: "bold" };
 
-<<<<<<< HEAD
-=======
   const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -23,7 +17,8 @@ export default function Navbar() {
   }, isLoggedIn);
 
   function handleClick(e) {
-    localStorage.removeItem("token");
+    //localStorage.removeItem("token");
+    window.localStorage.clear();
     toast.success("Logout Successful");
     setLoggedIn(false);
   }
@@ -82,7 +77,6 @@ export default function Navbar() {
     }
   }
 
->>>>>>> a84ecda136f1c306fcae5867bad7a0ffb78e75dd
   return (
     <div>
       {/* <nav className="navbar navbar-dark bg-dark"> */}
@@ -101,14 +95,12 @@ export default function Navbar() {
         >
           Tasks
         </NavLink>
-<<<<<<< HEAD
 
         <NavLink className="nav-link" to={role} activeStyle={activeStyle}>
           {greeting}
         </NavLink>
 
         <NavLink to="/" className="nav-link" activeStyle={activeStyle} exact>
-=======
         <NavLink
           className="nav-link"
           to="/client page"
@@ -118,7 +110,6 @@ export default function Navbar() {
         </NavLink> */}
       {renderLogin()}
       {/* <NavLink to="/" className="nav-link" activeStyle={activeStyle} exact>
->>>>>>> a84ecda136f1c306fcae5867bad7a0ffb78e75dd
           Login
         </NavLink>
         <NavLink to="/" className="nav-link" activeStyle={activeStyle} exact>
