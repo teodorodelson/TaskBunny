@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import jwtDecode from "jwt-decode";
+import axios from "axios";
 const divStyle = {
   width: "100%",
   height: "100%",
@@ -12,7 +14,17 @@ export default class ClientTaskPage extends Component {
   };
 
   componentDidMount() {
-    fetch("http://13.58.157.19:8081/tasks")
+    const token = localStorage.getItem("token");
+    const decode = jwtDecode(token);
+    const userIdz = decode.sub;
+    console.log(token);
+    fetch(`http://localhost:8081/tasks/mytask/${userIdz}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -20,11 +32,68 @@ export default class ClientTaskPage extends Component {
           tasks: data,
         });
       })
+
       .catch((err) => console.log(err));
   }
 
-  changeDone() {
-    console.log();
+  changeDone(task) {
+    const token = localStorage.getItem("token");
+    const data1 = {
+      amountpaid: task.amountpaid,
+      category: task.category,
+      clientid: task.clientid,
+      description: task.description,
+      name: task.name,
+      providerid: task.providerid,
+      status: "done",
+    };
+    const data2 = JSON.stringify(data1);
+    console.log(data2);
+    const tId = task.taskid;
+    const proxyUrl = "http://localhost:8081/tasks/status/";
+    const targetUrl = tId;
+    const holder = "https://cryptic-headland-94862.herokuapp.com/";
+    fetch(holder + proxyUrl + targetUrl, {
+      method: "PUT",
+      //     // body: {
+      //     //   name: task.name,
+      //     //   category: task.category,
+      //     //   clientid: task.clientid,
+      //     //   description: task.description,
+      //     //   status: stat,
+      //     //   amountpaid: task.amountpaid,
+      //     //   providerid: task.providerid,
+      //     // },
+
+      body: JSON.stringify(data1),
+
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
+      console.log(res);
+      console.log(data1);
+    });
+  }
+
+  //   axios
+  //     .put(`${holder}${proxyUrl}${targetUrl}`, data2, {
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Somethings wrong");
+  //       console.log(err);
+  //     });
+  // }
+
+  changeChange(task) {
+    console.log(task);
   }
   render() {
     return (
@@ -49,20 +118,8 @@ export default class ClientTaskPage extends Component {
               </tr>
             </thead>
             <tbody>
-              {/* <tr>
-                <td>420</td>
-                <td>My Laundry</td>
-                <td>Laundy</td>
-                <td>In progress</td>
-                <td>10</td>
-                if statement if not completed then it would display something
-                <td>
-                  <button className="btn btn-danger">Cancel Request</button>
-                  <button className="btn btn-success">Done </button>
-                </td>
-              </tr> */}
               {this.state.tasks.map((task) => {
-                if (task.status === "pending") {
+                if (task.status !== "done") {
                   return (
                     <tr key={task.taskid}>
                       <td>{task.taskid}</td>
@@ -72,10 +129,17 @@ export default class ClientTaskPage extends Component {
                       <td>{task.amountpaid}</td>
                       <td>{task.providerid}</td>
                       <td>
-                        <button className="btn btn-danger">Cancel</button>
                         <button
+                          type="submit"
+                          className="btn btn-danger"
+                          onClick={this.changeChange.bind(this, task)}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
                           className="btn btn-success"
-                          onClick={this.changeDone}
+                          onClick={this.changeDone.bind(this, task)}
                         >
                           Done{" "}
                         </button>
