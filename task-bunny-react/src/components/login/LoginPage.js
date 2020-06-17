@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Form,
@@ -17,6 +17,16 @@ function LoginPage(props) {
     password: "",
   });
 
+  const [redirect, setRedirect] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("redirect")) {
+      setRedirect(false);
+      localStorage.setItem("redirect", false);
+      props.history.push("/home");
+    }
+  }, []);
+
   function handleChange(event) {
     setCredentials({
       ...userCredentials,
@@ -27,7 +37,7 @@ function LoginPage(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if (true) {
-      fetch("http://localhost:8081/authenticate", {
+      fetch("http://13.58.157.19:8081/authenticate", {
         method: "POST",
 
         body: JSON.stringify({
@@ -48,7 +58,10 @@ function LoginPage(props) {
         });
 
       toast.success("Log In Successful");
-      props.history.push("/home");
+      setRedirect(true);
+      localStorage.setItem("redirect", true);
+      window.location.reload(false);
+      //props.history.push("/home");
     }
   }
 

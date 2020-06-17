@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Container from "react-bootstrap/Container";
@@ -17,8 +17,13 @@ import card_2 from "./../../Assets/card_03.jpg";
 import Role from "../../Pages/role";
 
 export default function HomePage() {
-  const isAvailable = localStorage.getItem("token");
-  if (isAvailable) return <Role />;
+  /* const isAvailable = localStorage.getItem("token");
+  if (isAvailable) return <Role />; */
+
+  useEffect(() => {
+    //window.location.reload(false);
+  }, []);
+
   return (
     <>
       <Container fluid>
@@ -64,7 +69,7 @@ export default function HomePage() {
               etc.) that doesn't distract from the layout. A practice not
               without controversy, laying out pages with meaningless filler text
               can be very useful when the focus is meant to be on design, not
-              content.              
+              content.
             </p>
           </Col>
 
