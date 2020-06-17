@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ClientProfilePic from "../Assets/AgentProfilePic.png";
+import Axios from "axios";
+import JWTD from "jwt-decode";
+import { useEffect } from "react";
 
-export default function providerPage() {
+export default function ClientPage() {
+  const [task, setTask] = useState([]);
+  const [clientDetails, setClientDetails] = useState([]);
+
+  const token = localStorage.getItem("token");
+  const username = JWTD(token).sub;
+
+  useEffect(() => {
+    Axios.get("http://13.58.157.19:8081/tasks/mytask/" + username, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((result) => setTask(result.data))
+      .catch((err) => console.log("error username:" + err));
+  }, []);
+
+  useEffect(() => {
+    Axios.get("http://13.58.157.19:8081/users/getClientDetails/" + username, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((result) => setClientDetails(result.data))
+      .catch((err) => console.log("error username:" + err));
+  }, []);
+
   return (
     <React.Fragment>
       <div class="container-fluid">
@@ -17,7 +46,11 @@ export default function providerPage() {
                 style={{ height: "300px", width: "250px" }}
               />
               <div class="card-body">
-                <h5 class="card-title">Kevin</h5>
+                {clientDetails.map((name, index) => (
+                  <h5 key={index} class="card-title">
+                    {name.firstname}
+                  </h5>
+                ))}
                 <p class="card-text">
                   I need a trusted service provider to delegate my work.
                 </p>
@@ -27,17 +60,22 @@ export default function providerPage() {
           </div>
           <div class="col-md">
             <ul class="list-group m-2">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Pick my laundry
-                <span class="badge badge-primary badge-pill">Urgent</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Take my dog for a walk
-                <span class="badge badge-primary badge-pill">less urgent</span>
-              </li>
+              {task.map((task, index) => (
+                <li
+                  key={index}
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  {task.description}
+                  <span class="badge badge-primary badge-pill">
+                    {task.status}
+                  </span>
+                </li>
+              ))}
             </ul>
+            <div className="text-center"></div>
           </div>
-          <div class="col-sm"></div>
+          <div class="powr-reviews" id="6ba27d8f_1592370663"></div>
+          <script src="https://www.powr.io/powr.js?platform=bootstrap"></script>
         </div>
       </div>
     </React.Fragment>

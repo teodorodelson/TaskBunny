@@ -2,6 +2,32 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function providerPage() {
+  const [task, setTask] = useState([]);
+  const [taskid, setTaskID] = useState([]);
+
+  const token = localStorage.getItem("token");
+  const username = JWTD(token).sub;
+
+  useEffect(() => {
+    Axios.get("http://13.58.157.19:8081/tasks/" + username, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((result) => setTask(result.data))
+      .catch((err) => console.log("error username:" + err));
+  }, []);
+
+  function whenDone() {
+    Axios.delete("http://13.58.157.19:8081/tasks/mytask/" + taskid, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((result) => console.log(result))
+      .catch((err) => console.log("error username:" + err));
+  }
+
   return (
     <React.Fragment>
       <div class="container-fluid">

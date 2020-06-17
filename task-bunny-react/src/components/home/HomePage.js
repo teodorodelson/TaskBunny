@@ -17,8 +17,9 @@ import card_2 from "./../../Assets/card_03.jpg";
 import Role from "../../Pages/role";
 
 export default function HomePage() {
-  const isAvailable = localStorage.getItem("token");
-  if (isAvailable) return <Role />;
+  /*  const isAvailable = localStorage.getItem("token");
+  if (isAvailable) return <Role />; */
+
   return (
     <>
       <Container>
