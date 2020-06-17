@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import bgtask from "./bg_task.jpg";
 import axios from "axios";
+import JwtDecode from "jwt-decode";
 const divStyle = {
   width: "100%",
   height: "100%",
@@ -16,9 +17,9 @@ export default class Clienttask extends Component {
       name: "",
       category: "",
       description: "",
-      status: "done",
+      status: "pending",
       amountpaid: 0,
-      clientid: 13,
+      clientid: 0,
       providerid: 0,
       // taskid: 9,
     };
@@ -27,12 +28,41 @@ export default class Clienttask extends Component {
   changeHanlder = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    const decode = JwtDecode(token);
+    const userIdz = decode.sub;
+    console.log(token);
+    fetch(`http://13.58.157.19:8081/users/userByname/${userIdz}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          clientid: data,
+        });
+      })
+
+      .catch((err) => console.log(err));
+  }
 
   submitHandler = (event) => {
     event.preventDefault();
     console.log(this.state);
+    const token = localStorage.getItem("token");
+
     axios
-      .post("http://13.58.157.19:8081/tasks", this.state)
+      .post("http://13.58.157.19:8081/tasks", this.state, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
         console.log(response);
         // toast.success("Coffee Successfully Created");
@@ -85,10 +115,16 @@ export default class Clienttask extends Component {
                     name="category"
                     onChange={this.changeHanlder}
                   >
+                    <option value="" disabled hidden>
+                      Choose here
+                    </option>
+                    <option value="Home">Home</option>
+                    <option value="Moving">Moving</option>
                     <option value="Laundry">Laundry</option>
-                    <option value="House">House</option>
-                    <option value="Gardening">Gardening</option>
-                    <option value="Others">Others</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Food">Food</option>
+                    <option value="Yard Work">Yard Work</option>
+                    <option value="Delivery">Delivery</option>
                   </select>
                   {/* <input
                     className="form-control"
