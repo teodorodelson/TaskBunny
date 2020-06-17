@@ -25,7 +25,6 @@ export default function HomePage() {
         <Container fluid>
           <Row>
             <p>
-<<<<<<< HEAD
               <br />
               <div className="welcomeline">
                 <img src={logo} alt="Logo" className="center" />;
@@ -35,7 +34,6 @@ export default function HomePage() {
                   tasks
                 </h6>
               </div>
-=======
               HISTORY, PURPOSE AND USAGE Lorem ipsum, or lipsum as it is
               sometimes known, is dummy text used in laying out print, graphic
               or web designs. The passage is attributed to an unknown typesetter
@@ -49,7 +47,6 @@ export default function HomePage() {
               without controversy, laying out pages with meaningless filler text
               can be very useful when the focus is meant to be on design, not
               content.
->>>>>>> 0991effd42c55380ead83cb4daa2176bd109229a
             </p>
           </Row>
 

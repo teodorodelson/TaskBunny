@@ -17,10 +17,16 @@ export default function ClientPage(props) {
 
   useEffect(() => {
     console.log(location.state);
-    if (location.state.username) {
+    /*   if (location.state.username) {
       setClientName(location.state.username);
     } else {
+      setClientName(username); 
+    }*/
+
+    if (location.state === null) {
       setClientName(username);
+    } else {
+      setClientName(location.state.username);
     }
 
     Axios.get("http://13.58.157.19:8081/tasks/mytask/" + clientName, {
