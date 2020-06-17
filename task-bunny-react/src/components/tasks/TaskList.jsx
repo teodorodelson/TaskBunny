@@ -34,12 +34,12 @@ export default function TaskList(props) {
             </p>
             <p>{props.task.description}</p>
             <p style={{ display: "inline-block", color: "green" }}>
-              {dummyTask.duration}
+              {props.time}
             </p>
             <Link
               to={{
                 pathname: `/task/${props.task.taskid}`,
-                state: { task: props.task },
+                state: { task: props.task, time: props.time },
               }}
             >
               <button

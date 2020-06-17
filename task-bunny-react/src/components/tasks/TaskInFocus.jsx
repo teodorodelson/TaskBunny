@@ -4,6 +4,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import JWTD from "jwt-decode";
+import Axios from "axios";
+import { toast } from "react-toastify";
 import laundryCategory from "../../Assets/laundry-category.jpg";
 
 export default function TaskInFocus(props) {
@@ -17,6 +20,43 @@ export default function TaskInFocus(props) {
     category: "Home Repair",
     duration: "3 weeks",
   }); /* Dummy Data */
+  const [providerID, setProviderID] = useState("");
+  const [task, setTask] = useState([]);
+
+  function handleClick(e) {
+    const token = localStorage.getItem("token");
+    const username = JWTD(token).sub;
+
+    Axios.get("http://13.58.157.19:8081/users/userByname/" + username, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((result) => setProviderID(result.data))
+      .catch((err) => console.log("error username:" + err));
+
+    Axios.put("http://13.58.157.19:8081/tasks/provider/" + props.task.taskid, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: JSON.stringify({
+        taskid: props.task.taskid,
+        name: props.task.name,
+        category: props.task.category,
+        description: props.task.description,
+        status: "in progress",
+        amountpaid: props.task.amountpaid,
+        clientid: props.task.clientid,
+        providerid: providerID,
+      }),
+    })
+      .then((result) => console.log(result))
+      .catch((err) => console.log("error role:" + err));
+
+    toast.success("Task Picked Up");
+    //props.history.push("/provider page");
+  }
+
   return (
     <>
       {/* <section>
@@ -43,11 +83,11 @@ export default function TaskInFocus(props) {
         <Row>
           <Col md={4}>
             <Card>
-              <Card.Img src={dummyTask.img} alt={dummyTask.name} />
+              <Card.Img src={props.image} alt={props.task.name} />
               <Card.Body>
-                <h2>{dummyTask.name}</h2>
+                <h2>{props.task.name}</h2>
                 <h5>
-                  {dummyTask.client}{" "}
+                  {props.task.clientid}{" "}
                   <span
                     className="badge badge-warning"
                     style={{ fontSize: "13px" }}
@@ -62,22 +102,24 @@ export default function TaskInFocus(props) {
             <Card>
               <Card.Body>
                 <p style={{ fontSize: "30px", fontWeight: "bold" }}>
-                  ${dummyTask.price}
+                  ${props.task.amountpaid}
                 </p>
-                <p>{dummyTask.description}</p>
-                <p style={{ color: "green" }}>{dummyTask.duration}</p>
-                <Link
+                <p>{props.task.description}</p>
+                <p style={{ color: "green" }}>{props.time}</p>
+                {/* <Link
                   to={{
                     pathname: `/provider tasks`,
                   }}
+                  onClick={handleClick}
+                > */}
+                <button
+                  className="btn btn-success"
+                  style={{ float: "right" }}
+                  onClick={handleClick}
                 >
-                  <button
-                    className="btn btn-success"
-                    style={{ float: "right" }}
-                  >
-                    Pick Up Task
-                  </button>
-                </Link>
+                  Pick Up Task
+                </button>
+                {/* </Link> */}
               </Card.Body>
             </Card>
           </Col>
