@@ -18,7 +18,7 @@ export default class ClientTaskPage extends Component {
     const decode = jwtDecode(token);
     const userIdz = decode.sub;
     console.log(token);
-    fetch(`http://localhost:8081/tasks/mytask/${userIdz}`, {
+    fetch(`http://13.58.157.19:8081/tasks/mytask/${userIdz}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -50,21 +50,10 @@ export default class ClientTaskPage extends Component {
     const data2 = JSON.stringify(data1);
     console.log(data2);
     const tId = task.taskid;
-    const proxyUrl = "http://localhost:8081/tasks/status/";
+    const proxyUrl = "http://13.58.157.19:8081/tasks/status/";
     const targetUrl = tId;
-    const holder = "https://cryptic-headland-94862.herokuapp.com/";
-    fetch(holder + proxyUrl + targetUrl, {
+    fetch(proxyUrl + targetUrl, {
       method: "PUT",
-      //     // body: {
-      //     //   name: task.name,
-      //     //   category: task.category,
-      //     //   clientid: task.clientid,
-      //     //   description: task.description,
-      //     //   status: stat,
-      //     //   amountpaid: task.amountpaid,
-      //     //   providerid: task.providerid,
-      //     // },
-
       body: JSON.stringify(data1),
 
       headers: {
@@ -74,6 +63,8 @@ export default class ClientTaskPage extends Component {
     }).then((res) => {
       console.log(res);
       console.log(data1);
+      // this.props.history.push("/client page");
+      window.location.reload();
     });
   }
 
@@ -94,7 +85,52 @@ export default class ClientTaskPage extends Component {
 
   changeChange(task) {
     console.log(task);
+    const token = localStorage.getItem("token");
+    const data1 = {
+      amountpaid: task.amountpaid,
+      category: task.category,
+      clientid: task.clientid,
+      description: task.description,
+      name: task.name,
+      providerid: task.providerid,
+      status: "done",
+    };
+    const data2 = JSON.stringify(data1);
+    console.log(data2);
+    const tId = task.taskid;
+    const proxyUrl = "http://13.58.157.19:8081/deletetask/";
+    const targetUrl = tId;
+    fetch(proxyUrl + targetUrl, {
+      method: "DELETE",
+      //     // body: {
+      //     //   name: task.name,
+      //     //   category: task.category,
+      //     //   clientid: task.clientid,
+      //     //   description: task.description,
+      //     //   status: stat,
+      //     //   amountpaid: task.amountpaid,
+      //     //   providerid: task.providerid,
+      //     // },
+
+      // body: JSON.stringify(data1),
+
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
+      console.log(res);
+      console.log(data1);
+
+      window.location.reload();
+    });
+    // deletetask/taskzId
   }
+
+  changeFeedback(task) {
+    alert("hey");
+  }
+
   render() {
     return (
       <div style={divStyle}>
@@ -155,7 +191,15 @@ export default class ClientTaskPage extends Component {
                       <td>{task.status}</td>
                       <td>{task.amountpaid}</td>
                       <td>{task.providerid}</td>
-                      <td>Complete</td>
+                      <td>
+                        <button
+                          type="submit"
+                          className="btn btn-danger"
+                          onClick={this.changeFeedback.bind(this, task)}
+                        >
+                          Feedback
+                        </button>
+                      </td>
                     </tr>
                   );
                 }
