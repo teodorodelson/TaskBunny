@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Container from "react-bootstrap/Container";
@@ -25,6 +25,7 @@ export default function HomePage() {
         <Container fluid>
           <Row>
             <p>
+<<<<<<< HEAD
               <br />
               <div className="welcomeline">
                 <img src={logo} alt="Logo" className="center" />;
@@ -34,6 +35,21 @@ export default function HomePage() {
                   tasks
                 </h6>
               </div>
+=======
+              HISTORY, PURPOSE AND USAGE Lorem ipsum, or lipsum as it is
+              sometimes known, is dummy text used in laying out print, graphic
+              or web designs. The passage is attributed to an unknown typesetter
+              in the 15th century who is thought to have scrambled parts of
+              Cicero's De Finibus Bonorum et Malorum for use in a type specimen
+              book. It usually begins with: “Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua.” The purpose of lorem ipsum is to
+              create a natural looking block of text (sentence, paragraph, page,
+              etc.) that doesn't distract from the layout. A practice not
+              without controversy, laying out pages with meaningless filler text
+              can be very useful when the focus is meant to be on design, not
+              content.
+>>>>>>> 0991effd42c55380ead83cb4daa2176bd109229a
             </p>
           </Row>
 

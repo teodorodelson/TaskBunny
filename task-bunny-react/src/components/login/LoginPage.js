@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Form,
@@ -16,6 +16,16 @@ function LoginPage(props) {
     username: "",
     password: "",
   });
+
+  const [redirect, setRedirect] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("redirect")) {
+      setRedirect(false);
+      localStorage.setItem("redirect", false);
+      props.history.push("/home");
+    }
+  }, []);
 
   function handleChange(event) {
     setCredentials({
@@ -48,7 +58,10 @@ function LoginPage(props) {
         });
 
       toast.success("Log In Successful");
-      props.history.push("/home");
+      setRedirect(true);
+      localStorage.setItem("redirect", true);
+      window.location.reload(false);
+      //props.history.push("/home");
     }
   }
 

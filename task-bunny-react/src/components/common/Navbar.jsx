@@ -14,7 +14,7 @@ export default function Navbar() {
     if (localStorage.getItem("token") !== null) {
       setLoggedIn(true);
     }
-  }, isLoggedIn);
+  }, [isLoggedIn]);
 
   function handleClick(e) {
     //localStorage.removeItem("token");
