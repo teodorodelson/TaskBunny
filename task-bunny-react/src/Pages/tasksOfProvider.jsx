@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Axios from "axios";
+import JWTD from "jwt-decode";
+import { withRouter } from "react-router-dom";
 
-export default function providerPage() {
+function ProviderPage(props) {
   const [task, setTask] = useState([]);
-  const [taskid, setTaskID] = useState([]);
+  //const [id, setID] = useState([]);
 
   const token = localStorage.getItem("token");
   const username = JWTD(token).sub;
 
   useEffect(() => {
-    Axios.get("http://13.58.157.19:8081/tasks/" + username, {
+    Axios.get("http://13.58.157.19:8081/tasks/providerTasks/" + username, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -18,15 +21,22 @@ export default function providerPage() {
       .catch((err) => console.log("error username:" + err));
   }, []);
 
-  function whenDone() {
-    Axios.delete("http://13.58.157.19:8081/tasks/mytask/" + taskid, {
+  function whenDone(name) {
+    Axios.get("http://13.58.157.19:8081/users/" + name.clientid, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log(result.data.username);
+        props.history.push({
+          pathname: "/ROLE_CLIENT",
+          state: { username: result.data.username },
+        });
+      })
       .catch((err) => console.log("error username:" + err));
   }
+  //console.log(typeof task[0]);
 
   return (
     <React.Fragment>
@@ -35,26 +45,33 @@ export default function providerPage() {
         <div class="row">
           <div class="col-lg">
             <ul class="list-group m-2">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Pick my laundry
-                <span class="badge badge-primary badge-pill">Urgent</span>
-                <button type="button" class="btn btn-outline-danger">
-                  Done
-                </button>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Take my dog for a walk
-                <span class="badge badge-primary badge-pill">less urgent</span>
-                <button type="button" class="btn btn-outline-danger">
-                  Done
-                </button>
-              </li>
+              {task.map((name, index) => (
+                <li
+                  key={index}
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  {name.description}
+                  <span class="badge badge-primary badge-pill">
+                    Category : {name.category}
+                  </span>
+                  <span class="badge badge-primary badge-pill">
+                    Status : {name.status}
+                  </span>
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    onClick={() => whenDone(name)}
+                  >
+                    Feedback
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
-          <div class="col-sm"></div>
-          <div class="col-sm"></div>
         </div>
       </div>
     </React.Fragment>
   );
 }
+
+export default withRouter(ProviderPage);

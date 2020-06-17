@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import ProviderPage from "./Pages/providerPage";
+import ProviderPage from "./Pages/ProviderPage";
 import ClientPage from "./Pages/clientPage";
 import ProviderTasks from "./Pages/tasksOfProvider";
 import "./App.css";
@@ -35,14 +35,14 @@ function App() {
           {/* <Route path="/" component={Clienttask} exact /> */}
           {/* <Route component={NotFoundPage} /> */}
 
-          <Route path="/provider">
+          <Route path="/ROLE_PROVIDER">
             <ProviderPage />
           </Route>
 
-          <Route path="/client">
+          <Route path="/ROLE_CLIENT">
             <ClientPage />
           </Route>
-
+          <Route path="/ROLE_ADMIN"></Route>
           <Route path="/provider tasks">
             <ProviderTasks />
           </Route>

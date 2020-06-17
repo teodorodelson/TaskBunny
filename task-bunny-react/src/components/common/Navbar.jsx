@@ -24,7 +24,7 @@ export default function Navbar() {
   }
 
   function renderLogin() {
-    if (isLoggedIn) {
+    if (isLoggedIn && role != null) {
       return (
         <nav className="navbar navbar-dark bg-dark">
           <NavLink
@@ -42,12 +42,9 @@ export default function Navbar() {
           >
             Tasks
           </NavLink>
-          <NavLink
-            className="nav-link"
-            to="/client page"
-            activeStyle={activeStyle}
-          >
-            Profile
+
+          <NavLink className="nav-link" to={role} activeStyle={activeStyle}>
+            {greeting}
           </NavLink>
           <NavLink
             to="/"
