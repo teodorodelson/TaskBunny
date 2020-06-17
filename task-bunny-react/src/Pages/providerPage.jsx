@@ -8,6 +8,7 @@ export default function ProviderPage() {
   const [providerID, setProviderID] = useState("");
   const [earnings, setEarnings] = useState("");
   const [tasks, setTasks] = useState("");
+  const [totalTasks, setTotalTasks] = useState([]);
 
   const token = localStorage.getItem("token");
   const username = JWTD(token).sub;
@@ -35,18 +36,19 @@ export default function ProviderPage() {
   })
     .then((result) => setTasks(result.data))
     .catch((err) => console.log("error totaltasks:" + err));
-  ////////////////////////////////////////////////////////////////////////////////
-  /*   Axios.get("http://13.58.157.19:8081/role/" + providerID, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((result) => localStorage.setItem("role", result.data))
-    .catch((err) => console.log("error role:" + err)); */
+
+  useEffect(() => {
+    Axios.get("http://13.58.157.19:8081/tasks/taskbyprovider/" + username, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((result) => setTotalTasks(result.data))
+      .catch((err) => console.log("error username:" + err));
+  }, []);
 
   return (
     <React.Fragment>
-      <button type="submit">Button to provider page</button>
       <div className="container-fluid">
         <div className="display-4">Service Provider Profile</div>
         <div className="row">
@@ -62,7 +64,7 @@ export default function ProviderPage() {
                 style={{ height: "300px", width: "250px" }}
               />
               <div className="card-body">
-                <h5 className="card-title">William O.</h5>
+                <h5 className="card-title">{username.split("@")[0]}</h5>
                 <p className="card-text">
                   I'm a professional laundry man, with 15 years of experience in
                   laundry services.
@@ -88,7 +90,10 @@ export default function ProviderPage() {
               Transfer Money
             </button>
           </div>
-          <div className="col-sm"></div>
+          <div className="col-sm">
+            <div class="powr-reviews" id="6ba27d8f_1592370663"></div>
+            <script src="https://www.powr.io/powr.js?platform=bootstrap"></script>
+          </div>
         </div>
       </div>
     </React.Fragment>
