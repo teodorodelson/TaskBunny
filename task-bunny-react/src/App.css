@@ -42,7 +42,7 @@
   height: 500px;
   margin: auto;
   margin-top: 150px !important;
-  background-color:lightcyan !important; 
+  background-color:lightsteelblue !important; 
   
 }
 
@@ -51,7 +51,7 @@
   height: 600px;
   margin: auto;
   margin-top: 130px !important;
-  background-color:lightcyan !important; 
+  background-color:lightsteelblue !important; 
   
 }
 
@@ -62,7 +62,7 @@
 }
 body {
   /* background: #1C8EF9 !important; */
-  background:lightskyblue !important;
+  background:lightgray !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;

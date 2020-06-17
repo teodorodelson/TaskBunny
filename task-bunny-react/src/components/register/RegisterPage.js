@@ -49,7 +49,7 @@ function RegisterPage(props) {
         console.log(res);
       });
 
-    toast.success("Reegistration successfull");
+    toast.success("Registration successfull");
     props.history.push("/");
   }
 

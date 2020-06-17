@@ -27,7 +27,7 @@ function LoginPage(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if (true) {
-      fetch("http://13.58.157.19:8081/authenticate", {
+      fetch("http://localhost:8081/authenticate", {
         method: "POST",
 
         body: JSON.stringify({

@@ -22,24 +22,23 @@ export default function HomePage() {
 
   return (
     <>
-      <Container>
+      <Container fluid>
         <Row>
           <p>
             <br />
             <div className="welcomeline">
               <img src={logo} alt="Logo" className="center" />;
               <hr />
-              <h2>
+              <h6>
                 Have more time for yourself, let someone else do your other
                 tasks
-              </h2>
+              </h6>
             </div>
           </p>
         </Row>
 
         <Row>
-          <Col></Col>
-          <Col xs={9}>
+          <Col>
             <Carousel>
               <Carousel.Item>
                 <img className="d-block w-100" src={logo_0} alt="First slide" />
@@ -52,7 +51,23 @@ export default function HomePage() {
               </Carousel.Item>
             </Carousel>
           </Col>
-          <Col></Col>
+          <Col>
+            <p>
+              HISTORY, PURPOSE AND USAGE Lorem ipsum, or lipsum as it is
+              sometimes known, is dummy text used in laying out print, graphic
+              or web designs. The passage is attributed to an unknown typesetter
+              in the 15th century who is thought to have scrambled parts of
+              Cicero's De Finibus Bonorum et Malorum for use in a type specimen
+              book. It usually begins with: “Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua.” The purpose of lorem ipsum is to
+              create a natural looking block of text (sentence, paragraph, page,
+              etc.) that doesn't distract from the layout. A practice not
+              without controversy, laying out pages with meaningless filler text
+              can be very useful when the focus is meant to be on design, not
+              content.              
+            </p>
+          </Col>
 
           <br />
         </Row>
