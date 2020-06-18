@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import JWTD from "jwt-decode";
+import Axios from "axios";
 
-export default function providerPage() {
+export default function ProviderPage() {
   const [task, setTask] = useState([]);
   const [taskid, setTaskID] = useState([]);
 

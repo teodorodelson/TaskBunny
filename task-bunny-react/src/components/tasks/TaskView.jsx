@@ -38,6 +38,8 @@ export default function TaskView(props) {
         task={task}
         time={props.location.state.time}
         image={getImage()}
+        firstName={props.location.state.clientFirst}
+        lastName={props.location.state.clientLast}
       />
     </>
   );
