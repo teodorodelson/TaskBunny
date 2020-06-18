@@ -25,6 +25,8 @@ import tech_4 from "./../../Assets/tech_used_005.png";
 import tech_5 from "./../../Assets/tech_used_006.png";
 import tech_6 from "./../../Assets/tech_used_007.png";
 import tech_7 from "./../../Assets/tech_used_008.png";
+import tech_8 from "./../../Assets/tech_used_009.png";
+import tech_9 from "./../../Assets/tech_used_010.png";
 
 export default function HomePage() {
   const token = localStorage.getItem("token");
@@ -66,6 +68,9 @@ export default function HomePage() {
                   <Col>
                     <Image src={tech_2} rounded fluid />
                   </Col>
+                  <Col>
+                    <Image src={tech_8} rounded fluid />
+                  </Col>
                 </Row>
                 <Row>
                   <Col>
@@ -79,6 +84,9 @@ export default function HomePage() {
                   </Col>
                   <Col>
                     <Image src={tech_7} rounded fluid />
+                  </Col>
+                  <Col>
+                    <Image src={tech_9} rounded fluid />
                   </Col>
                 </Row>
                 <hr />
