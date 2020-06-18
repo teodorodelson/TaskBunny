@@ -5,7 +5,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
 import CardColumns from "react-bootstrap/CardColumns";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
 import logo_0 from "./../../Assets/carousel_01.jpg";
 import logo_1 from "./../../Assets/carousel_02.jpg";
@@ -15,6 +17,15 @@ import card_0 from "./../../Assets/card_01.jpg";
 import card_1 from "./../../Assets/card_02.jpg";
 import card_2 from "./../../Assets/card_03.jpg";
 import Role from "../../Pages/role";
+import tech_0 from "./../../Assets/tech_used_001.png";
+import tech_1 from "./../../Assets/tech_used_002.png";
+import tech_2 from "./../../Assets/tech_used_003.png";
+import tech_3 from "./../../Assets/tech_used_004.png";
+import tech_4 from "./../../Assets/tech_used_005.png";
+import tech_5 from "./../../Assets/tech_used_006.png";
+import tech_6 from "./../../Assets/tech_used_007.png";
+import tech_7 from "./../../Assets/tech_used_008.png";
+
 
 export default function HomePage() {
   const token = localStorage.getItem("token");
@@ -22,9 +33,12 @@ export default function HomePage() {
     return (
       <>
         <Role />
-        <Container fluid>
+        <Container>
           <Row>
-            <p>
+            <br />
+          </Row>
+          <Row>
+            <Col>
               <br />
               <div className="welcomeline">
                 <img src={logo} alt="Logo" className="center" />;
@@ -34,20 +48,43 @@ export default function HomePage() {
                   tasks
                 </h6>
               </div>
-              HISTORY, PURPOSE AND USAGE Lorem ipsum, or lipsum as it is
-              sometimes known, is dummy text used in laying out print, graphic
-              or web designs. The passage is attributed to an unknown typesetter
-              in the 15th century who is thought to have scrambled parts of
-              Cicero's De Finibus Bonorum et Malorum for use in a type specimen
-              book. It usually begins with: “Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua.” The purpose of lorem ipsum is to
-              create a natural looking block of text (sentence, paragraph, page,
-              etc.) that doesn't distract from the layout. A practice not
-              without controversy, laying out pages with meaningless filler text
-              can be very useful when the focus is meant to be on design, not
-              content.
-            </p>
+            </Col>
+            <Col>
+              <Container fluid>
+              <Row>
+                <h5>Technologies Used:</h5>
+              </Row>
+                <Row>
+                  <Col>
+                    <Image src={tech_3} rounded fluid/>
+                  </Col>
+                  <Col>
+                    <Image src={tech_1} rounded fluid/>
+                  </Col>
+                  <Col>
+                    <Image src={tech_0} rounded fluid/>
+                  </Col>
+                  <Col>
+                    <Image src={tech_2} rounded fluid/>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Image src={tech_5} rounded fluid/>
+                  </Col>
+                  <Col>
+                    <Image src={tech_4} rounded fluid/>
+                  </Col>
+                  <Col>
+                    <Image src={tech_6} rounded fluid/>
+                  </Col>
+                  <Col>
+                    <Image src={tech_7} rounded fluid/>
+                  </Col>
+                </Row>
+                <hr/>
+              </Container>
+            </Col>
           </Row>
 
           <Row>
@@ -201,6 +238,14 @@ export default function HomePage() {
             </CardColumns>
           </Row>
         </Container>
+        <MDBFooter color="blue" className="font-small pt-4 mt-4">
+          <div className="footer-copyright text-center py-3 purps">
+            <MDBContainer fluid>
+              &copy; {new Date().getFullYear()} Copyright: Some Bunny Once Told
+              Me
+            </MDBContainer>
+          </div>
+        </MDBFooter>
       </>
     );
   } else {
