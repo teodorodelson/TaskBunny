@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import bgtask from "./bg_task.jpg";
 import axios from "axios";
 import JwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
 const divStyle = {
   width: "100%",
   height: "100%",
@@ -21,7 +22,6 @@ export default class Clienttask extends Component {
       amountpaid: 0,
       clientid: 0,
       providerid: 0,
-      // taskid: 9,
     };
   }
 
@@ -42,9 +42,8 @@ export default class Clienttask extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         this.setState({
-          clientid: data,
+          clientid: data[0].userid,
         });
       })
 
@@ -65,8 +64,16 @@ export default class Clienttask extends Component {
       })
       .then((response) => {
         console.log(response);
-        // toast.success("Coffee Successfully Created");
-        // this.props.history.push("/coffee");
+        toast("🦄 Task Successfully Created", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        this.props.history.push("/viewtask");
       })
       .catch((err) => {
         console.log("Somethings wrong");
