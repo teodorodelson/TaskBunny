@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import serviceProviderImage from "../Assets/ServiceProvider.jpg";
 import Axios from "axios";
 import JWTD from "jwt-decode";
+import { Link } from "react-router-dom";
 
 export default function ProviderPage() {
   const [providerID, setProviderID] = useState([]);
@@ -34,7 +35,6 @@ export default function ProviderPage() {
   Axios.get("http://13.58.157.19:8081/tasks/totaltasks/" + providerID, {
     headers: {
       Authorization: `Bearer ${token}`,
-      x,
     },
   })
     .then((result) => setTasks(result.data))
@@ -54,6 +54,11 @@ export default function ProviderPage() {
     <React.Fragment>
       <div className="container-fluid">
         <div className="display-4">Service Provider Profile</div>
+        <Link to="/provider tasks">
+          <button type="button" class="btn btn-info">
+            Info
+          </button>
+        </Link>
         <div className="row">
           <div className="col-3">
             <div
@@ -76,7 +81,8 @@ export default function ProviderPage() {
               </div>
             </div>
           </div>
-          <div className="col-md">
+
+          <div className="col-sm">
             <ul className="list-group m-2">
               <li className="list-group-item d-flex justify-content-between align-items-center">
                 Total Task Completed
@@ -90,6 +96,7 @@ export default function ProviderPage() {
               </li>
             </ul>
           </div>
+
           <div className="col-sm">
             <div class="powr-reviews" id="6ba27d8f_1592370663"></div>
             <script src="https://www.powr.io/powr.js?platform=bootstrap"></script>

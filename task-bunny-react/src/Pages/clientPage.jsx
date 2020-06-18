@@ -5,6 +5,7 @@ import Axios from "axios";
 import JWTD from "jwt-decode";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ClientPage(props) {
   const [task, setTask] = useState([]);
@@ -52,6 +53,16 @@ export default function ClientPage(props) {
     <React.Fragment>
       <div class="container-fluid">
         <div className="display-4">Client Profile</div>
+        <Link to="/createtask">
+          <button type="button" class="btn btn-info m-2">
+            Create Task
+          </button>
+        </Link>
+        <Link to="/viewtask">
+          <button type="button" class="btn btn-info">
+            View Task
+          </button>
+        </Link>
         <div class="row">
           <div class="col-3">
             <div class="card m-2" style={{ width: "250px", height: "500px" }}>
