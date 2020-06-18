@@ -4,16 +4,32 @@ import ClientProfilePic from "../Assets/AgentProfilePic.png";
 import Axios from "axios";
 import JWTD from "jwt-decode";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-export default function ClientPage() {
+export default function ClientPage(props) {
   const [task, setTask] = useState([]);
   const [clientDetails, setClientDetails] = useState([]);
+  const [clientName, setClientName] = useState("");
+  const location = useLocation();
 
   const token = localStorage.getItem("token");
   const username = JWTD(token).sub;
 
   useEffect(() => {
-    Axios.get("http://13.58.157.19:8081/tasks/mytask/" + username, {
+    console.log(location.state);
+    /*   if (location.state.username) {
+      setClientName(location.state.username);
+    } else {
+      setClientName(username); 
+    }*/
+
+    if (location.state === null) {
+      setClientName(username);
+    } else {
+      setClientName(location.state.username);
+    }
+
+    Axios.get("http://13.58.157.19:8081/tasks/mytask/" + clientName, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -23,7 +39,7 @@ export default function ClientPage() {
   }, []);
 
   useEffect(() => {
-    Axios.get("http://13.58.157.19:8081/users/getClientDetails/" + username, {
+    Axios.get("http://13.58.157.19:8081/users/getClientDetails/" + clientName, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
