@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
+import { toast } from "react-toastify";
+
 const divStyle = {
   width: "100%",
   height: "100%",
@@ -8,7 +11,7 @@ const divStyle = {
   backgroundSize: "cover",
 };
 
-export default class ClientTaskPage extends Component {
+class ClientTaskPage extends Component {
   state = {
     tasks: [],
   };
@@ -63,6 +66,15 @@ export default class ClientTaskPage extends Component {
     }).then((res) => {
       console.log(res);
       console.log(data1);
+      toast('🦄 Task Completed: Redirecting to provide a feedback"', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       // this.props.history.push("/client page");
       window.location.reload();
     });
@@ -119,16 +131,30 @@ export default class ClientTaskPage extends Component {
         Authorization: "Bearer " + token,
       },
     }).then((res) => {
-      console.log(res);
-      console.log(data1);
-
+      toast.error("Task has been successfully deleted");
       window.location.reload();
     });
     // deletetask/taskzId
   }
 
   changeFeedback(task) {
-    alert("hey");
+    const token = localStorage.getItem("token");
+    alert(task.providerid);
+    axios
+      .get("http://13.58.157.19:8081/users/" + task.providerid, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        console.log(result);
+        console.log(result.data.username);
+        this.props.history.push({
+          pathname: "/ROLE_PROVIDER",
+          state: { username: result.data.username },
+        });
+      })
+      .catch((err) => console.log("error username:" + err));
   }
 
   render() {
@@ -211,3 +237,4 @@ export default class ClientTaskPage extends Component {
     );
   }
 }
+export default withRouter(ClientTaskPage);
