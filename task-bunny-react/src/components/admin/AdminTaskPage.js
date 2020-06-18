@@ -1,14 +1,24 @@
 import React from "react";
 import AdminTask from "./AdminTask";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class AdminTaskPage extends React.Component {
   state = {
-    task: [],
+    tasks: [],
   };
 
   componentDidMount() {
-    fetch("http://18.223.15.119:3000/admin-task")
+    //fetch("http://13.58.157.19:8081/tasks")
+    const token = localStorage.getItem("token");
+    console.log(token);
+    fetch(`http://13.58.157.19:8081/tasks`, {
+      method: "GET",
+      //might not need
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -23,9 +33,13 @@ export default class AdminTaskPage extends React.Component {
       <div>
         <h3>Task Progress </h3>
         <AdminTask tasks={this.state.tasks} />
-        <button className="btn btn-secondary btn-lg">Delete</button>
+        <Link to="/admin-task/delete">
+          <button className="btn btn-secondary btn-lg">Delete</button>
+        </Link>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button className="btn btn-secondary btn-lg">Reset</button>
+        <Link to="/admin-user">
+          <button className="btn btn-secondary btn-lg">Users</button>
+        </Link>
       </div>
     );
   }

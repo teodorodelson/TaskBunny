@@ -16,6 +16,9 @@ import ClientFeedback from "./components/ClientComponent/ClientFeedback";
 import ProviderFeedback from "./components/ClientComponent/ProviderFeedback";
 import AdminUsersPage from "./components/admin/AdminUsersPage";
 import AdminTaskPage from "./components/admin/AdminTaskPage";
+import AdminTaskDelete from "./components/admin/AdminTaskDelete";
+import AdminUserDelete from "./components/admin/AdminUserDelete";
+import AdminUserUpdate from "./components/admin/AdminUserUpdate";
 import Navbar from "./components/common/Navbar";
 import { ToastContainer } from "react-toastify";
 import Footer from "./components/common/Footer";
@@ -33,6 +36,9 @@ function App() {
           <Route path="/providerfeedback" component={ProviderFeedback} />
           <Route path="/admin-user" component={AdminUsersPage} exact />
           <Route path="/admin-task" component={AdminTaskPage} exact />
+          <Route path="/admin-task/delete" component={AdminTaskDelete} exact />
+          <Route path="/admin-user/delete" component={AdminUserDelete} exact />
+          <Route path="/admin-user/update" component={AdminUserUpdate} exact />
           <Route path="/" component={Clienttask} exact />
           {/* <Route component={NotFoundPage} /> */}
 
@@ -56,7 +62,6 @@ function App() {
         </Switch>
         {/* <Footer /> */}
       </div>
-      
     </div>
   );
 }

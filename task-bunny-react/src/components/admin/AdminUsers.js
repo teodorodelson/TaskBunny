@@ -7,23 +7,35 @@ export default function AdminUser(props) {
         <tr>
           <th>User ID</th>
           <th>Name</th>
-          <th>Date Joined</th>
+          <th>Password</th>
+          <th>Role</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Action</th>
+          <th>Date Joined</th>
         </tr>
       </thead>
       <tbody>
-        {/* {props.users.map((user) => {
+        {props.users.map((user) => {
           return (
-            <tr key={user.user_id}>
-              <td>{user.user_name}</td>
-              <td>{user.date_joined}</td>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
+            <tr key={user.userid}>
+              <td>{user.userid}</td>
+              <td>{user.username}</td>
+              <td>{user.password}</td>
+              <td>{user.role}</td>
+              <td>{user.firstname}</td>
+              <td>{user.lastname}</td>
+              <td>{user.datejoined}</td>
+              <td>
+                <input class="form-check-input" type="checkbox" id="checkbox" />
+                <label
+                  class="form-check-label"
+                  for="checkbox"
+                  class="mr-2 label-table"
+                ></label>
+              </td>
             </tr>
           );
-        })} */}
+        })}
       </tbody>
     </table>
   );

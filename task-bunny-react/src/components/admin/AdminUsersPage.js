@@ -1,5 +1,6 @@
 import React from "react";
 import AdminUser from "./AdminUsers";
+import { Link } from "react-router-dom";
 //import { Link } from "react-router-dom";
 
 export default class AdminUserPage extends React.Component {
@@ -8,7 +9,16 @@ export default class AdminUserPage extends React.Component {
   };
 
   componentDidMount() {
-    fetch("http://18.223.15.119:3000/admin-user")
+    const token = localStorage.getItem("token");
+    //fetch("http://13.58.157.19:8081/users")
+    fetch("http://13.58.157.19:8081/users", {
+      method: "GET",
+      //might not need
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -23,9 +33,17 @@ export default class AdminUserPage extends React.Component {
       <div>
         <h3>Users </h3>
         <AdminUser users={this.state.users} />
-        <button className="btn btn-secondary btn-lg">Delete</button>
+        <Link to="/admin-user/delete">
+          <button className="btn btn-secondary btn-lg">Delete</button>
+        </Link>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button className="btn btn-secondary btn-lg">Reset</button>
+        <Link to="/admin-user/update">
+          <button className="btn btn-secondary btn-lg">Update</button>
+        </Link>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Link to="/admin-task">
+          <button className="btn btn-secondary btn-lg">Tasks</button>
+        </Link>
       </div>
     );
   }
