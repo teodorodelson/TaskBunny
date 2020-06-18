@@ -33,7 +33,7 @@ export default class Clienttask extends Component {
     const decode = JwtDecode(token);
     const userIdz = decode.sub;
     console.log(token);
-    fetch(`http://13.58.157.19:8081/users/userByname/${userIdz}`, {
+    fetch(`http://13.58.157.19:8081/users/getClientDetails/${userIdz}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -42,6 +42,7 @@ export default class Clienttask extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         this.setState({
           clientid: data[0].userid,
         });

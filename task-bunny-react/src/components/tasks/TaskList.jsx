@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
 export default function TaskList(props) {
+  const [clients, setClients] = useState([]);
   const [dummyTask, setDummyTask] = useState({
     taskID: 1,
     name: "Plumbing Help Needed",
@@ -13,6 +14,24 @@ export default function TaskList(props) {
     category: "Home Repair",
     duration: "3 weeks",
   }); /* Dummy Data */
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    //Get first name and last name of client
+    fetch(`http://13.58.157.19:8081/users/${props.task.clientid}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Client", data);
+        setClients(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <>
       <Col md={12} style={{ marginTop: "20px" }}>
@@ -39,7 +58,12 @@ export default function TaskList(props) {
             <Link
               to={{
                 pathname: `/task/${props.task.taskid}`,
-                state: { task: props.task, time: props.time },
+                state: {
+                  task: props.task,
+                  time: props.time,
+                  clientFirst: clients.firstname,
+                  clientLast: clients.lastname,
+                },
               }}
             >
               <button
@@ -51,7 +75,9 @@ export default function TaskList(props) {
             </Link>
           </Card.Body>
           <Card.Footer>
-            <small>{props.task.clientid}</small>
+            <small>
+              {clients.firstname} {clients.lastname}
+            </small>
           </Card.Footer>
         </Card>
       </Col>
