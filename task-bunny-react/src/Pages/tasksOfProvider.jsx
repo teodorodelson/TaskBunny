@@ -12,7 +12,7 @@ function ProviderPage(props) {
   const username = JWTD(token).sub;
 
   useEffect(() => {
-    Axios.get("http://13.58.157.19:8081/tasks/providerTasks/" + username, {
+    Axios.get("http://13.58.157.19:8081/users/providerTasks/" + username, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -50,7 +50,7 @@ function ProviderPage(props) {
                   key={index}
                   class="list-group-item d-flex justify-content-between align-items-center"
                 >
-                  {name.description}
+                  {name.name}
                   <span class="badge badge-primary badge-pill">
                     Category : {name.category}
                   </span>

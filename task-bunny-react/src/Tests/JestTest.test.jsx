@@ -1,14 +1,14 @@
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import ClientPage from "../Pages/clientPage";
+import Role from "../Pages/role";
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Client Page", () => {
-  const wrapper = shallow(<ClientPage />);
+  const wrapper = shallow(<Role />);
   it("should contain a image tag", () => {
-    const ContentComponent = wrapper.find("img");
+    const ContentComponent = wrapper.find("React.Fragment");
     expect(ContentComponent.length).toBe(1);
   });
 });

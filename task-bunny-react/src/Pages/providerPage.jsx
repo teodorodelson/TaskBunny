@@ -40,23 +40,18 @@ export default function ProviderPage() {
     .then((result) => setTasks(result.data))
     .catch((err) => console.log("error totaltasks:" + err));
 
-  /*      useEffect(() => {
-    Axios.get("http://13.58.157.19:8081/tasks/taskbyprovider/" + username, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((result) => setTotalTasks(result.data))
-      .catch((err) => console.log("error username:" + err));
-  }, []);  */
-
+  function RenderRole() {
+    if (localStorage.getItem("role") === "ROLE_PROVIDER") {
+      return <h5 className="card-title">{username.split("@")[0]}</h5>;
+    }
+  }
   return (
     <React.Fragment>
       <div className="container-fluid">
         <div className="display-4">Service Provider Profile</div>
         <Link to="/provider tasks">
           <button type="button" class="btn btn-info">
-            Info
+            View Task
           </button>
         </Link>
         <div className="row">
@@ -72,7 +67,7 @@ export default function ProviderPage() {
                 style={{ height: "300px", width: "250px" }}
               />
               <div className="card-body">
-                <h5 className="card-title">{username.split("@")[0]}</h5>
+                {RenderRole()}
                 <p className="card-text">
                   I'm a professional laundry man, with 15 years of experience in
                   laundry services.

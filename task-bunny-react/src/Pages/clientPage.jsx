@@ -48,6 +48,11 @@ export default function ClientPage(props) {
       .then((result) => setClientDetails(result.data))
       .catch((err) => console.log("error username:" + err));
   }, []);
+  function RenderRole() {
+    if (localStorage.getItem("role") === "ROLE_CLIENT") {
+      return <h5 className="card-title">{username.split("@")[0]}</h5>;
+    }
+  }
 
   return (
     <React.Fragment>
@@ -73,11 +78,7 @@ export default function ClientPage(props) {
                 style={{ height: "300px", width: "250px" }}
               />
               <div class="card-body">
-                {clientDetails.map((name, index) => (
-                  <h5 key={index} class="card-title">
-                    {name.firstname}
-                  </h5>
-                ))}
+                {RenderRole()}
                 <p class="card-text">
                   I need a trusted service provider to delegate my work.
                 </p>
