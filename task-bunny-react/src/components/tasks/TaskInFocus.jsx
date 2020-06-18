@@ -39,7 +39,9 @@ function TaskInFocus(props) {
       .then((result) => {
         console.log("Getting Provider's ID", result.data[0]);
         setProviderID(result.data[0]);
+        localStorage.setItem("providerid", result.data[0]);
         console.log("set Provider ID", providerID);
+        console.log("Local storage", localStorage.getItem("providerid"));
       })
       .catch((err) => console.log("error username:" + err));
 
@@ -76,7 +78,7 @@ function TaskInFocus(props) {
         status: props.task.status, //"pending",
         amountpaid: props.task.amountpaid,
         clientid: props.task.clientid,
-        providerid: providerID,
+        providerid: localStorage.getItem("providerid"),
       }),
       headers: {
         Authorization: `Bearer ${token}`,
@@ -113,7 +115,9 @@ function TaskInFocus(props) {
       .catch((err) => console.log(err));
 
     toast.success("Task Picked Up");
-    props.history.push("/categories");
+    setTimeout(() => {
+      props.history.push("/ROLE_PROVIDER");
+    }, 3000);
   }
 
   return (

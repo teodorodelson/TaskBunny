@@ -37,7 +37,7 @@ export default class AdminTaskPage extends React.Component {
           <button className="btn btn-secondary btn-lg">Delete</button>
         </Link>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <Link to="/admin-user">
+        <Link to="/ROLE_ADMIN">
           <button className="btn btn-secondary btn-lg">Users</button>
         </Link>
       </div>

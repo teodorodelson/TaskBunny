@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 
 export default function ProviderPage() {
   const [providerID, setProviderID] = useState([]);
-  const [earnings, setEarnings] = useState("");
-  const [tasks, setTasks] = useState("");
+  const [earnings, setEarnings] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [totalTasks, setTotalTasks] = useState([]);
 
   const token = localStorage.getItem("token");
@@ -20,26 +20,33 @@ export default function ProviderPage() {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((result) => setProviderID(result.data))
+      .then((result) => localStorage.setItem("PID", result.data))
       .catch((err) => console.log("error username:" + err));
+
+    Axios.get(
+      "http://13.58.157.19:8081/tasks/totalEarnings/" +
+        localStorage.getItem("PID"),
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((result) => setEarnings(result.data))
+      .catch((err) => console.log("error totalearnings:" + err));
+
+    Axios.get(
+      "http://13.58.157.19:8081/tasks/totaltasks/" +
+        localStorage.getItem("PID"),
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((result) => setTasks(result.data))
+      .catch((err) => console.log("error totaltasks:" + err));
   }, []);
-
-  Axios.get("http://13.58.157.19:8081/tasks/totalEarnings/" + providerID, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((result) => setEarnings(result.data))
-    .catch((err) => console.log("error totalearnings:" + err));
-
-  Axios.get("http://13.58.157.19:8081/tasks/totaltasks/" + providerID, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((result) => setTasks(result.data))
-    .catch((err) => console.log("error totaltasks:" + err));
-
   function RenderRole() {
     if (localStorage.getItem("role") === "ROLE_PROVIDER") {
       return <h5 className="card-title">{username.split("@")[0]}</h5>;

@@ -42,7 +42,7 @@ export default function AdminUserUpdate(props) {
       .then((result) => {
         console.log(result);
         toast.success("User Updated");
-        props.history.push("/admin-user");
+        props.history.push("/ROLE_ADMIN");
       })
       .catch((err) => {
         console.log(err);

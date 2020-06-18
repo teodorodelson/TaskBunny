@@ -30,7 +30,7 @@ function RegisterPage(props) {
     var date = new Date();
     var timestamp = date.getTime();
 
-    fetch("http://localhost:8081/usersregister", {
+    fetch("http://13.58.157.19:8081/usersregister", {
       method: "POST",
       body: JSON.stringify({
         username: userCredentials.username,

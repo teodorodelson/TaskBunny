@@ -33,11 +33,11 @@ export default class AdminUserPage extends React.Component {
       <div>
         <h3>Users </h3>
         <AdminUser users={this.state.users} />
-        <Link to="/admin-user/delete">
+        <Link to="/ROLE_ADMIN/delete">
           <button className="btn btn-secondary btn-lg">Delete</button>
         </Link>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <Link to="/admin-user/update">
+        <Link to="/ROLE_ADMIN/update">
           <button className="btn btn-secondary btn-lg">Update</button>
         </Link>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

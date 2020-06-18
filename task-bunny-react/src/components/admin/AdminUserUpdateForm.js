@@ -78,7 +78,7 @@ export default function AdminUpdateUserForm(props) {
           onChange={props.onChange}
           onSubmit={props.onSubmit}
           name="lastname"
-          value={props.user.firstname}
+          value={props.user.lastname}
         />
       </div>
 

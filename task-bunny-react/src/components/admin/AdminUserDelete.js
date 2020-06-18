@@ -26,7 +26,7 @@ export default function DeleteUser(props) {
       .then((result) => {
         console.log(result);
         toast.success("user Deleted!");
-        props.history.push("/admin-user");
+        props.history.push("/ROLE_ADMIN");
       })
       .catch((err) => {
         toast.error("Something went wrong....");

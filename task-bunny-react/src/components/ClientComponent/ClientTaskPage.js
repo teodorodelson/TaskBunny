@@ -139,7 +139,7 @@ class ClientTaskPage extends Component {
 
   changeFeedback(task) {
     const token = localStorage.getItem("token");
-    alert(task.providerid);
+
     axios
       .get("http://13.58.157.19:8081/users/" + task.providerid, {
         headers: {

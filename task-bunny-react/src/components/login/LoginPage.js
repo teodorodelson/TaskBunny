@@ -56,15 +56,15 @@ function LoginPage(props) {
         localStorage.setItem("token", res.jwt);
         toast.success("Log In Successful");
         props.history.push("/home");
-      }).catch(
-        // toast.error("Invalid username/passwordz")
-      );
+        window.location.reload();
+      })
+      .catch
+      // toast.error("Invalid username/passwordz")
+      ();
 
-    
     // setRedirect(true);
     // localStorage.setItem("redirect", true);
-    // window.location.reload(false);
-    
+    //  window.location.reload(false);
   }
 
   return (

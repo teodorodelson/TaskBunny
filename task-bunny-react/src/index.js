@@ -15,13 +15,12 @@ import * as serviceWorker from "./serviceWorker";
 // const store = createStore(allReducers, applyMiddleware(thunk, promise, logger));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      {/* <Provider store={store}> */}
-      <App />
-      {/* </Provider> */}
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    {/* <Provider store={store}> */}
+    <App />
+    {/* </Provider> */}
+  </BrowserRouter>,
+
   document.getElementById("root")
 );
 

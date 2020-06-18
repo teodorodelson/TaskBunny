@@ -17,6 +17,7 @@ import ProviderFeedback from "./components/ClientComponent/ProviderFeedback";
 import AdminUsersPage from "./components/admin/AdminUsersPage";
 import AdminTaskPage from "./components/admin/AdminTaskPage";
 import AdminTaskDelete from "./components/admin/AdminTaskDelete";
+import ProviderPage from "./Pages/ProviderPage";
 import AdminUserDelete from "./components/admin/AdminUserDelete";
 import AdminUserUpdate from "./components/admin/AdminUserUpdate";
 import Navbar from "./components/common/Navbar";
@@ -34,22 +35,21 @@ function App() {
           <Route path="/home" component={HomePage} exact />
           <Route path="/register" component={RegisterPage} exact />
           <Route path="/providerfeedback" component={ProviderFeedback} />
-          <Route path="/admin-user" component={AdminUsersPage} exact />
+          <Route path="/ROLE_ADMIN" component={AdminUsersPage} exact />
           <Route path="/admin-task" component={AdminTaskPage} exact />
           <Route path="/admin-task/delete" component={AdminTaskDelete} exact />
-          <Route path="/admin-user/delete" component={AdminUserDelete} exact />
-          <Route path="/admin-user/update" component={AdminUserUpdate} exact />
+          <Route path="/ROLE_ADMIN/delete" component={AdminUserDelete} exact />
+          <Route path="/ROLE_ADMIN/update" component={AdminUserUpdate} exact />
           <Route path="/" component={Clienttask} exact />
           {/* <Route component={NotFoundPage} /> */}
 
-          {/* <Route path="/ROLE_PROVIDER">
+          <Route path="/ROLE_PROVIDER">
             <ProviderPage />
-          </Route> */}
+          </Route>
 
           <Route path="/ROLE_CLIENT">
             <ClientPage />
           </Route>
-          <Route path="/ROLE_ADMIN"></Route>
           <Route path="/provider tasks">
             <ProviderTasks />
           </Route>

@@ -11,11 +11,12 @@ export default function Navbar() {
 
   useEffect(() => {
     //console.log("Token", localStorage.getItem("token"));
+
     if (localStorage.getItem("token") !== null) {
       setLoggedIn(true);
     }
   }, [isLoggedIn]);
-
+  console.log(typeof localStorage.getItem("token"));
   function handleClick(e) {
     //localStorage.removeItem("token");
     window.localStorage.clear();
@@ -24,7 +25,7 @@ export default function Navbar() {
   }
 
   function renderLogin() {
-    if (isLoggedIn && role != null) {
+    if (isLoggedIn && role !== null) {
       return (
         <nav className="navbar navbar-dark bg-dark">
           <NavLink
