@@ -82,3 +82,7 @@ body, html, .App, #root, .auth-wrapper {
 .purps{
   background-color: #f3e5f5 ;
 }
+
+.full-body{
+  min-height: 100vh; 
+}
