@@ -55,12 +55,15 @@ function LoginPage(props) {
         console.log(res);
         localStorage.setItem("token", res.jwt);
         toast.success("Log In Successful");
+        setTimeout(() => {
+          window.location.reload();
+        }, 400);
         props.history.push("/home");
-        window.location.reload();
       })
-      .catch
-      // toast.error("Invalid username/passwordz")
-      ();
+      .catch((error) => {
+        toast.error("Invalid username or password");
+      });
+    // toast.error("Invalid username/passwordz")
 
     // setRedirect(true);
     // localStorage.setItem("redirect", true);
@@ -80,6 +83,7 @@ function LoginPage(props) {
             type="plaintext "
             placeholder="Enter user name"
             name="username"
+            required
           />
         </Form.Group>
 
@@ -89,6 +93,7 @@ function LoginPage(props) {
             type="password"
             placeholder="Enter password"
             name="password"
+            required
           />
         </Form.Group>
         <Link to="/register"> Not yet registered? click here to sign up!</Link>
