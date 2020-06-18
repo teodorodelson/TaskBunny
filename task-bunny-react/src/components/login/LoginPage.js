@@ -19,13 +19,13 @@ function LoginPage(props) {
 
   const [redirect, setRedirect] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem("redirect")) {
-      setRedirect(false);
-      localStorage.setItem("redirect", false);
-      props.history.push("/home");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("redirect")) {
+  //     setRedirect(false);
+  //     localStorage.setItem("redirect", false);
+  //     props.history.push("/home");
+  //   }
+  // }, []);
 
   function handleChange(event) {
     setCredentials({
@@ -36,33 +36,35 @@ function LoginPage(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (true) {
-      fetch("http://13.58.157.19:8081/authenticate", {
-        method: "POST",
 
-        body: JSON.stringify({
-          // Username of a user on the WordPress website in which the REST API request
-          // is being made to.
-          username: userCredentials.username,
-          // And the above user's password.
-          password: userCredentials.password,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
-          localStorage.setItem("token", res.jwt);
-        });
+    fetch("http://13.58.157.19:8081/authenticate", {
+      method: "POST",
+      body: JSON.stringify({
+        // Username of a user on the WordPress website in which the REST API request
+        // is being made to.
+        username: userCredentials.username,
+        // And the above user's password.
+        password: userCredentials.password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.jwt);
+        toast.success("Log In Successful");
+        props.history.push("/home");
+      }).catch(
+        // toast.error("Invalid username/passwordz")
+      );
 
-      toast.success("Log In Successful");
-      setRedirect(true);
-      localStorage.setItem("redirect", true);
-      window.location.reload(false);
-      //props.history.push("/home");
-    }
+    
+    // setRedirect(true);
+    // localStorage.setItem("redirect", true);
+    // window.location.reload(false);
+    
   }
 
   return (

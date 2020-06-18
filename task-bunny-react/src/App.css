@@ -42,7 +42,7 @@
   height: 500px;
   margin: auto;
   margin-top: 150px !important;
-  background-color:lightsteelblue !important; 
+  background-color:#f2e9f4 !important; 
   
 }
 
@@ -51,7 +51,7 @@
   height: 600px;
   margin: auto;
   margin-top: 130px !important;
-  background-color:lightsteelblue !important; 
+  background-color:#f2e9f4v !important; 
   
 }
 
@@ -62,7 +62,7 @@
 }
 body {
   /* background: #1C8EF9 !important; */
-  background:lightgray !important;
+  background:#ecf4f9 !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -79,3 +79,10 @@ body, html, .App, #root, .auth-wrapper {
   height: 100%;
 }
 
+.purps{
+  background-color: #f3e5f5 ;
+}
+
+.full-body{
+  min-height: 100vh; 
+}

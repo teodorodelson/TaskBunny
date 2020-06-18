@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import ProviderPage from "./Pages/ProviderPage";
+// import ProviderPage from "./Pages/ProviderPage";
 import ClientPage from "./Pages/clientPage";
 import ProviderTasks from "./Pages/tasksOfProvider";
 import "./App.css";
@@ -18,10 +18,11 @@ import AdminUsersPage from "./components/admin/AdminUsersPage";
 import AdminTaskPage from "./components/admin/AdminTaskPage";
 import Navbar from "./components/common/Navbar";
 import { ToastContainer } from "react-toastify";
+import Footer from "./components/common/Footer";
 
 function App() {
   return (
-    <>
+    <div>
       <Navbar className="container" />
       <div className="container-fluid">
         <ToastContainer autoClose={3000} hideProgressBar />
@@ -32,12 +33,12 @@ function App() {
           <Route path="/providerfeedback" component={ProviderFeedback} />
           <Route path="/admin-user" component={AdminUsersPage} exact />
           <Route path="/admin-task" component={AdminTaskPage} exact />
-          {/* <Route path="/" component={Clienttask} exact /> */}
+          <Route path="/" component={Clienttask} exact />
           {/* <Route component={NotFoundPage} /> */}
 
-          <Route path="/ROLE_PROVIDER">
+          {/* <Route path="/ROLE_PROVIDER">
             <ProviderPage />
-          </Route>
+          </Route> */}
 
           <Route path="/ROLE_CLIENT">
             <ClientPage />
@@ -53,8 +54,10 @@ function App() {
           <Route path="/viewtask" component={ClientTaskPage} />
           <Route path="/clientfeedback" component={ClientFeedback} />
         </Switch>
+        {/* <Footer /> */}
       </div>
-    </>
+      
+    </div>
   );
 }
 
