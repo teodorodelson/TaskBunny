@@ -26,7 +26,6 @@ import tech_5 from "./../../Assets/tech_used_006.png";
 import tech_6 from "./../../Assets/tech_used_007.png";
 import tech_7 from "./../../Assets/tech_used_008.png";
 
-
 export default function HomePage() {
   const token = localStorage.getItem("token");
   if (token != null) {
@@ -51,38 +50,38 @@ export default function HomePage() {
             </Col>
             <Col>
               <Container fluid>
-              <Row>
-                <h5>Technologies Used:</h5>
-              </Row>
+                <Row>
+                  <h5>Technologies Used:</h5>
+                </Row>
                 <Row>
                   <Col>
-                    <Image src={tech_3} rounded fluid/>
+                    <Image src={tech_3} rounded fluid />
                   </Col>
                   <Col>
-                    <Image src={tech_1} rounded fluid/>
+                    <Image src={tech_1} rounded fluid />
                   </Col>
                   <Col>
-                    <Image src={tech_0} rounded fluid/>
+                    <Image src={tech_0} rounded fluid />
                   </Col>
                   <Col>
-                    <Image src={tech_2} rounded fluid/>
+                    <Image src={tech_2} rounded fluid />
                   </Col>
                 </Row>
                 <Row>
                   <Col>
-                    <Image src={tech_5} rounded fluid/>
+                    <Image src={tech_5} rounded fluid />
                   </Col>
                   <Col>
-                    <Image src={tech_4} rounded fluid/>
+                    <Image src={tech_4} rounded fluid />
                   </Col>
                   <Col>
-                    <Image src={tech_6} rounded fluid/>
+                    <Image src={tech_6} rounded fluid />
                   </Col>
                   <Col>
-                    <Image src={tech_7} rounded fluid/>
+                    <Image src={tech_7} rounded fluid />
                   </Col>
                 </Row>
-                <hr/>
+                <hr />
               </Container>
             </Col>
           </Row>
@@ -115,19 +114,18 @@ export default function HomePage() {
             </Col>
             <Col>
               <p>
-                HISTORY, PURPOSE AND USAGE Lorem ipsum, or lipsum as it is
-                sometimes known, is dummy text used in laying out print, graphic
-                or web designs. The passage is attributed to an unknown
-                typesetter in the 15th century who is thought to have scrambled
-                parts of Cicero's De Finibus Bonorum et Malorum for use in a
-                type specimen book. It usually begins with: “Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.” The purpose of
-                lorem ipsum is to create a natural looking block of text
-                (sentence, paragraph, page, etc.) that doesn't distract from the
-                layout. A practice not without controversy, laying out pages
-                with meaningless filler text can be very useful when the focus
-                is meant to be on design, not content.
+                Some bunny once told me the world is gonna roll me I ain't the
+                sharpest tool in the shed She was looking kind of dumb with her
+                finger and her thumb In the shape of an "L" on her forehead
+                Well, the years start coming and they don't stop coming Fed to
+                the rules and I hit the ground running Didn't make sense not to
+                live for fun Your brain gets smart but your head gets dumb So
+                much to do, so much to see So what's wrong with taking the
+                backstreets? You'll never know if you don't go You'll never
+                shine if you don't glow Hey now, you're an all star Get your
+                game on, go play Hey now, you're a rock star Get the show on,
+                get paid And all that glitters is gold Only shooting stars break
+                the mold
               </p>
             </Col>
 
@@ -140,19 +138,21 @@ export default function HomePage() {
               <Card>
                 <Card.Img variant="top" src={card_0} />
                 <Card.Body>
-                  <Card.Title>Card title that wraps to a new line</Card.Title>
+                  <Card.Title>
+                    What’s the number one item shipped by amazon? Cardboard
+                    boxes
+                  </Card.Title>
                   <Card.Text>
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
+                    Do you believe in love at first sight—or should I walk by
+                    again?
                   </Card.Text>
                 </Card.Body>
               </Card>
               <Card className="p-3">
                 <blockquote className="blockquote mb-0 card-body">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer posuere erat a ante.
+                    Let me guess, your middle name is Gillette, right? Because
+                    you're the best a man can get!
                   </p>
                   <footer className="blockquote-footer">
                     <small className="text-muted">
@@ -165,10 +165,12 @@ export default function HomePage() {
               <Card>
                 <Card.Img variant="top" src={card_1} />
                 <Card.Body>
-                  <Card.Title>Card title</Card.Title>
+                  <Card.Title>
+                    “If I had my life to live over again, I’d be a plumber.” –
+                    Albert Einstein
+                  </Card.Title>
                   <Card.Text>
-                    This card has supporting text below as a natural lead-in to
-                    additional content.{" "}
+                    My love for you is like diarrhea, I just can't hold it in.
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer>
@@ -177,10 +179,7 @@ export default function HomePage() {
               </Card>
               <Card bg="primary" text="white" className="text-center p-3">
                 <blockquote className="blockquote mb-0 card-body">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer posuere erat a ante.
-                  </p>
+                  <p>Do you like Star Wars? Because Yoda only one for me!</p>
                   <footer className="blockquote-footer">
                     <small className="text-muted">
                       Someone famous in{" "}
@@ -191,10 +190,10 @@ export default function HomePage() {
               </Card>
               <Card className="text-center">
                 <Card.Body>
-                  <Card.Title>Card title</Card.Title>
+                  <Card.Title>Old Joke</Card.Title>
                   <Card.Text>
-                    This card has supporting text below as a natural lead-in to
-                    additional content.{" "}
+                    Why do Java programmers hate holidays? Because there are no
+                    classes{" "}
                   </Card.Text>
                   <Card.Text>
                     <small className="text-muted">
@@ -205,12 +204,20 @@ export default function HomePage() {
               </Card>
               <Card>
                 <Card.Img src={card_2} />
+                <Card.Body>
+                  <Card.Title>
+                    Finally! Looks like my 'Rinse Charming' has arrived.
+                  </Card.Title>
+                  <Card.Text>
+                    Feel my shirt. Know what it’s made of? Boyfriend material.
+                  </Card.Text>
+                </Card.Body>
               </Card>
               <Card className="text-right">
                 <blockquote className="blockquote mb-0 card-body">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer posuere erat a ante.
+                    If you were a burger at McDonald's, you'd be named the
+                    McGorgeous!
                   </p>
                   <footer className="blockquote-footer">
                     <small className="text-muted">
@@ -222,11 +229,10 @@ export default function HomePage() {
               </Card>
               <Card>
                 <Card.Body>
-                  <Card.Title>Card title</Card.Title>
+                  <Card.Title>Real Happiest Place on Earth</Card.Title>
                   <Card.Text>
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This card has even longer
-                    content than the first to show that equal height action.
+                    They say Disneyland is the happiest place on earth. Well
+                    apparently, no one has ever been standing next to you.
                   </Card.Text>
                   <Card.Text>
                     <small className="text-muted">
