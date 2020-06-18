@@ -56,45 +56,48 @@ export default function ClientPage(props) {
 
   return (
     <React.Fragment>
-      <div class="container-fluid">
+      <div className="container-fluid">
         <div className="display-4">Client Profile</div>
         <Link to="/createtask">
-          <button type="button" class="btn btn-info m-2">
+          <button type="button" className="btn btn-info m-2">
             Create Task
           </button>
         </Link>
         <Link to="/viewtask">
-          <button type="button" class="btn btn-info">
+          <button type="button" className="btn btn-info">
             View Task
           </button>
         </Link>
-        <div class="row">
-          <div class="col-3">
-            <div class="card m-2" style={{ width: "250px", height: "500px" }}>
+        <div className="row">
+          <div className="col-3">
+            <div
+              className="card m-2"
+              style={{ width: "250px", height: "500px" }}
+            >
               <img
-                class="card-img-top"
+                className="card-img-top"
                 src={ClientProfilePic}
                 alt="Service Provider Profile Pic"
                 style={{ height: "300px", width: "250px" }}
               />
-              <div class="card-body">
+              <div className="card-body">
                 {RenderRole()}
-                <p class="card-text">
+                <p className="card-text">
                   I need a trusted service provider to delegate my work.
                 </p>
-                <span class="badge badge-success"> Rating : 5.0</span>
+                <span className="badge badge-success"> Rating : 5.0</span>
               </div>
             </div>
           </div>
-          <div class="col-md">
-            <ul class="list-group m-2">
+          <div className="col-md">
+            <ul className="list-group m-2">
               {task.map((task, index) => (
                 <li
                   key={index}
                   class="list-group-item d-flex justify-content-between align-items-center"
                 >
-                  {task.description}
-                  <span class="badge badge-primary badge-pill">
+                  {task.name}
+                  <span className="badge badge-primary badge-pill">
                     Category:{task.category}
                   </span>
                   <span class="badge badge-primary badge-pill">
@@ -105,7 +108,7 @@ export default function ClientPage(props) {
             </ul>
             <div className="text-center"></div>
           </div>
-          <div class="powr-reviews" id="6ba27d8f_1592370663"></div>
+          <div className="powr-reviews" id="6ba27d8f_1592370663"></div>
           <script src="https://www.powr.io/powr.js?platform=bootstrap"></script>
         </div>
       </div>
