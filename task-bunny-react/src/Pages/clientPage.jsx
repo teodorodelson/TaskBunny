@@ -29,7 +29,7 @@ export default function ClientPage(props) {
       setClientName(location.state.username);
     }
 
-    Axios.get("http://13.58.157.19:8081/tasks/mytask/" + clientName, {
+    Axios.get("http://13.58.157.19:8081/tasks/mytask/" + username, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -39,7 +39,7 @@ export default function ClientPage(props) {
   }, []);
 
   useEffect(() => {
-    Axios.get("http://13.58.157.19:8081/users/getClientDetails/" + clientName, {
+    Axios.get("http://13.58.157.19:8081/users/getClientDetails/" + username, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -83,7 +83,10 @@ export default function ClientPage(props) {
                 >
                   {task.description}
                   <span class="badge badge-primary badge-pill">
-                    {task.status}
+                    Category:{task.category}
+                  </span>
+                  <span class="badge badge-primary badge-pill">
+                    Status:{task.status}
                   </span>
                 </li>
               ))}

@@ -5,7 +5,7 @@ import Axios from "axios";
 import JWTD from "jwt-decode";
 
 export default function ProviderPage() {
-  const [providerID, setProviderID] = useState("");
+  const [providerID, setProviderID] = useState([]);
   const [earnings, setEarnings] = useState("");
   const [tasks, setTasks] = useState("");
   const [totalTasks, setTotalTasks] = useState([]);
@@ -13,13 +13,15 @@ export default function ProviderPage() {
   const token = localStorage.getItem("token");
   const username = JWTD(token).sub;
 
-  Axios.get("http://13.58.157.19:8081/users/userByname/" + username, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((result) => setProviderID(result.data))
-    .catch((err) => console.log("error username:" + err));
+  useEffect(() => {
+    Axios.get("http://13.58.157.19:8081/users/userByname/" + username, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((result) => setProviderID(result.data))
+      .catch((err) => console.log("error username:" + err));
+  }, []);
 
   Axios.get("http://13.58.157.19:8081/tasks/totalEarnings/" + providerID, {
     headers: {
@@ -32,12 +34,13 @@ export default function ProviderPage() {
   Axios.get("http://13.58.157.19:8081/tasks/totaltasks/" + providerID, {
     headers: {
       Authorization: `Bearer ${token}`,
+      x,
     },
   })
     .then((result) => setTasks(result.data))
     .catch((err) => console.log("error totaltasks:" + err));
 
-  useEffect(() => {
+  /*      useEffect(() => {
     Axios.get("http://13.58.157.19:8081/tasks/taskbyprovider/" + username, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -45,7 +48,7 @@ export default function ProviderPage() {
     })
       .then((result) => setTotalTasks(result.data))
       .catch((err) => console.log("error username:" + err));
-  }, []);
+  }, []);  */
 
   return (
     <React.Fragment>
@@ -86,9 +89,6 @@ export default function ProviderPage() {
                 </span>
               </li>
             </ul>
-            <button type="button" className="btn btn-success m-2 float-right">
-              Transfer Money
-            </button>
           </div>
           <div className="col-sm">
             <div class="powr-reviews" id="6ba27d8f_1592370663"></div>
