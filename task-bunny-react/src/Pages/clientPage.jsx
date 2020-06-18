@@ -5,6 +5,7 @@ import Axios from "axios";
 import JWTD from "jwt-decode";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ClientPage(props) {
   const [task, setTask] = useState([]);
@@ -29,7 +30,7 @@ export default function ClientPage(props) {
       setClientName(location.state.username);
     }
 
-    Axios.get("http://13.58.157.19:8081/tasks/mytask/" + clientName, {
+    Axios.get("http://13.58.157.19:8081/tasks/mytask/" + username, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -39,7 +40,7 @@ export default function ClientPage(props) {
   }, []);
 
   useEffect(() => {
-    Axios.get("http://13.58.157.19:8081/users/getClientDetails/" + clientName, {
+    Axios.get("http://13.58.157.19:8081/users/getClientDetails/" + username, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -47,11 +48,26 @@ export default function ClientPage(props) {
       .then((result) => setClientDetails(result.data))
       .catch((err) => console.log("error username:" + err));
   }, []);
+  function RenderRole() {
+    if (localStorage.getItem("role") === "ROLE_CLIENT") {
+      return <h5 className="card-title">{username.split("@")[0]}</h5>;
+    }
+  }
 
   return (
     <React.Fragment>
       <div class="container-fluid">
         <div className="display-4">Client Profile</div>
+        <Link to="/createtask">
+          <button type="button" class="btn btn-info m-2">
+            Create Task
+          </button>
+        </Link>
+        <Link to="/viewtask">
+          <button type="button" class="btn btn-info">
+            View Task
+          </button>
+        </Link>
         <div class="row">
           <div class="col-3">
             <div class="card m-2" style={{ width: "250px", height: "500px" }}>
@@ -62,11 +78,7 @@ export default function ClientPage(props) {
                 style={{ height: "300px", width: "250px" }}
               />
               <div class="card-body">
-                {clientDetails.map((name, index) => (
-                  <h5 key={index} class="card-title">
-                    {name.firstname}
-                  </h5>
-                ))}
+                {RenderRole()}
                 <p class="card-text">
                   I need a trusted service provider to delegate my work.
                 </p>
@@ -83,7 +95,10 @@ export default function ClientPage(props) {
                 >
                   {task.description}
                   <span class="badge badge-primary badge-pill">
-                    {task.status}
+                    Category:{task.category}
+                  </span>
+                  <span class="badge badge-primary badge-pill">
+                    Status:{task.status}
                   </span>
                 </li>
               ))}

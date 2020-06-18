@@ -19,13 +19,13 @@ function LoginPage(props) {
 
   const [redirect, setRedirect] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem("redirect")) {
-      setRedirect(false);
-      localStorage.setItem("redirect", false);
-      props.history.push("/home");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("redirect")) {
+  //     setRedirect(false);
+  //     localStorage.setItem("redirect", false);
+  //     props.history.push("/home");
+  //   }
+  // }, []);
 
   function handleChange(event) {
     setCredentials({
@@ -57,7 +57,7 @@ function LoginPage(props) {
         toast.success("Log In Successful");
         props.history.push("/home");
       }).catch(
-        toast.error("Invalid username/password")
+        // toast.error("Invalid username/passwordz")
       );
 
     

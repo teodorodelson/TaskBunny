@@ -3,9 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import serviceProviderImage from "../Assets/ServiceProvider.jpg";
 import Axios from "axios";
 import JWTD from "jwt-decode";
+import { Link } from "react-router-dom";
 
 export default function ProviderPage() {
-  const [providerID, setProviderID] = useState("");
+  const [providerID, setProviderID] = useState([]);
   const [earnings, setEarnings] = useState("");
   const [tasks, setTasks] = useState("");
   const [totalTasks, setTotalTasks] = useState([]);
@@ -13,13 +14,15 @@ export default function ProviderPage() {
   const token = localStorage.getItem("token");
   const username = JWTD(token).sub;
 
-  Axios.get("http://13.58.157.19:8081/users/userByname/" + username, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((result) => setProviderID(result.data))
-    .catch((err) => console.log("error username:" + err));
+  useEffect(() => {
+    Axios.get("http://13.58.157.19:8081/users/userByname/" + username, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((result) => setProviderID(result.data))
+      .catch((err) => console.log("error username:" + err));
+  }, []);
 
   Axios.get("http://13.58.157.19:8081/tasks/totalEarnings/" + providerID, {
     headers: {
@@ -37,20 +40,20 @@ export default function ProviderPage() {
     .then((result) => setTasks(result.data))
     .catch((err) => console.log("error totaltasks:" + err));
 
-  useEffect(() => {
-    Axios.get("http://13.58.157.19:8081/tasks/taskbyprovider/" + username, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((result) => setTotalTasks(result.data))
-      .catch((err) => console.log("error username:" + err));
-  }, []);
-
+  function RenderRole() {
+    if (localStorage.getItem("role") === "ROLE_PROVIDER") {
+      return <h5 className="card-title">{username.split("@")[0]}</h5>;
+    }
+  }
   return (
     <React.Fragment>
       <div className="container-fluid">
         <div className="display-4">Service Provider Profile</div>
+        <Link to="/provider tasks">
+          <button type="button" class="btn btn-info">
+            View Task
+          </button>
+        </Link>
         <div className="row">
           <div className="col-3">
             <div
@@ -64,7 +67,7 @@ export default function ProviderPage() {
                 style={{ height: "300px", width: "250px" }}
               />
               <div className="card-body">
-                <h5 className="card-title">{username.split("@")[0]}</h5>
+                {RenderRole()}
                 <p className="card-text">
                   I'm a professional laundry man, with 15 years of experience in
                   laundry services.
@@ -73,7 +76,8 @@ export default function ProviderPage() {
               </div>
             </div>
           </div>
-          <div className="col-md">
+
+          <div className="col-sm">
             <ul className="list-group m-2">
               <li className="list-group-item d-flex justify-content-between align-items-center">
                 Total Task Completed
@@ -86,10 +90,8 @@ export default function ProviderPage() {
                 </span>
               </li>
             </ul>
-            <button type="button" className="btn btn-success m-2 float-right">
-              Transfer Money
-            </button>
           </div>
+
           <div className="col-sm">
             <div class="powr-reviews" id="6ba27d8f_1592370663"></div>
             <script src="https://www.powr.io/powr.js?platform=bootstrap"></script>
