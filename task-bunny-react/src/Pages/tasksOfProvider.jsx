@@ -46,7 +46,7 @@ function ProviderPage(props) {
           <div class="col-lg">
             <ul class="list-group m-2">
               {task.map((name, index) => {
-                if (name.status === "pending") {
+                if (name.status === "done") {
                   return (
                     <li
                       key={index}
@@ -63,6 +63,28 @@ function ProviderPage(props) {
                         type="button"
                         class="btn btn-outline-danger"
                         onClick={() => whenDone(name)}
+                      >
+                        Feedback
+                      </button>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li
+                      key={index}
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      {name.name}
+                      <span class="badge badge-primary badge-pill">
+                        Category : {name.category}
+                      </span>
+                      <span class="badge badge-primary badge-pill">
+                        Status : {name.status}
+                      </span>
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger disabled"
+                        aria-diabled="true"
                       >
                         Feedback
                       </button>

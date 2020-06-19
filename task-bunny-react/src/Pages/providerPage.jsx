@@ -47,6 +47,7 @@ export default function ProviderPage() {
       .then((result) => setTasks(result.data))
       .catch((err) => console.log("error totaltasks:" + err));
   }, []);
+
   function RenderRole() {
     if (localStorage.getItem("role") === "ROLE_PROVIDER") {
       return <h5 className="card-title">{username.split("@")[0]}</h5>;
