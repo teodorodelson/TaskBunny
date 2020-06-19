@@ -40,28 +40,28 @@ function ProviderPage(props) {
 
   return (
     <React.Fragment>
-      <div class="container-fluid">
+      <div className="container-fluid">
         <div className="display-4">Pending Tasks</div>
-        <div class="row">
-          <div class="col-lg">
-            <ul class="list-group m-2">
+        <div className="row">
+          <div className="col-lg">
+            <ul className="list-group m-2">
               {task.map((name, index) => {
                 if (name.status === "done") {
                   return (
                     <li
                       key={index}
-                      class="list-group-item d-flex justify-content-between align-items-center"
+                      className="list-group-item d-flex justify-content-between align-items-center"
                     >
                       {name.name}
-                      <span class="badge badge-info badge-pill">
+                      <span className="badge badge-info badge-pill">
                         Category : {name.category}
                       </span>
-                      <span class="badge badge-success badge-pill">
+                      <span className="badge badge-success badge-pill">
                         Status : {name.status}
                       </span>
                       <button
                         type="button"
-                        class="btn btn-outline-danger"
+                        className="btn btn-outline-danger"
                         onClick={() => whenDone(name)}
                       >
                         Feedback
@@ -72,19 +72,18 @@ function ProviderPage(props) {
                   return (
                     <li
                       key={index}
-                      class="list-group-item d-flex justify-content-between align-items-center"
+                      className="list-group-item d-flex justify-content-between align-items-center"
                     >
                       {name.name}
-                      <span class="badge badge-info badge-pill">
+                      <span className="badge badge-info badge-pill">
                         Category : {name.category}
                       </span>
-                      <span class="badge badge-secondary badge-pill">
+                      <span className="badge badge-secondary badge-pill">
                         Status : {name.status}
                       </span>
                       <button
                         type="button"
-                        class="btn btn-outline-danger disabled"
-                        aria-diabled="true"
+                        className="btn btn-outline-danger disabled"
                       >
                         Feedback
                       </button>

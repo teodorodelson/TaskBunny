@@ -96,13 +96,13 @@ export default function ClientPage(props) {
               {task.map((task, index) => (
                 <li
                   key={index}
-                  class="list-group-item d-flex justify-content-between align-items-center"
+                  className="list-group-item d-flex justify-content-between align-items-center"
                 >
                   {task.name}
                   <span className="badge badge-info badge-pill">
                     <div className="display-5"> Category : {task.category}</div>
                   </span>
-                  <span class="badge badge-success badge-pill">
+                  <span className="badge badge-success badge-pill">
                     <div className="display-5">Status : {task.status} </div>
                   </span>
                 </li>

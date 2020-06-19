@@ -150,8 +150,8 @@ class ClientTaskPage extends Component {
         console.log(result);
         console.log(result.data.username);
         this.props.history.push({
-          pathname: "/ROLE_PROVIDER",
-          state: { username: result.data.username },
+          pathname: "/feedback",
+          // state: { username: result.data.username },
         });
       })
       .catch((err) => console.log("error username:" + err));

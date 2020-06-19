@@ -95,7 +95,7 @@ export default function ProviderPage() {
               </li>
               <Link to="/provider tasks">
                 <div className="text-center">
-                  <button type="button" class="btn btn-info m-2">
+                  <button type="button" className="btn btn-info m-2">
                     View Task
                   </button>
                 </div>
