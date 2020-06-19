@@ -116,7 +116,7 @@ function TaskInFocus(props) {
 
     toast.success("Task Picked Up");
     setTimeout(() => {
-      props.history.push("/ROLE_PROVIDER");
+      props.history.push("/feedback");
     }, 3000);
   }
 

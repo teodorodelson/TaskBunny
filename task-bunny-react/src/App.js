@@ -18,6 +18,7 @@ import AdminUsersPage from "./components/admin/AdminUsersPage";
 import AdminTaskPage from "./components/admin/AdminTaskPage";
 import AdminTaskDelete from "./components/admin/AdminTaskDelete";
 import ProviderPage from "./Pages/ProviderPage";
+import Feedback from "./Pages/Feedback";
 import AdminUserDelete from "./components/admin/AdminUserDelete";
 import AdminUserUpdate from "./components/admin/AdminUserUpdate";
 import Navbar from "./components/common/Navbar";
@@ -53,6 +54,10 @@ function App() {
           <Route path="/provider tasks">
             <ProviderTasks />
           </Route>
+          <Route path="/feedback">
+            <Feedback />
+          </Route>
+
           <Route path="/tasks" component={TaskPage} />
           <Route path="/task/:id" component={TaskView} />
           <Route path="/categories" component={CategoryPage} />

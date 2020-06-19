@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import serviceProviderImage from "../Assets/ServiceProvider.jpg";
+import serviceProviderImage from "../Assets/provider.jpg";
 import Axios from "axios";
 import JWTD from "jwt-decode";
 import { Link } from "react-router-dom";
@@ -57,11 +57,7 @@ export default function ProviderPage() {
     <React.Fragment>
       <div className="container-fluid">
         <div className="display-4">Service Provider Profile</div>
-        <Link to="/provider tasks">
-          <button type="button" class="btn btn-info">
-            View Task
-          </button>
-        </Link>
+
         <div className="row">
           <div className="col-3">
             <div
@@ -97,12 +93,14 @@ export default function ProviderPage() {
                   ${earnings}
                 </span>
               </li>
+              <Link to="/provider tasks">
+                <div className="text-center">
+                  <button type="button" class="btn btn-info m-2">
+                    View Task
+                  </button>
+                </div>
+              </Link>
             </ul>
-          </div>
-
-          <div className="col-sm">
-            <div class="powr-reviews" id="6ba27d8f_1592370663"></div>
-            <script src="https://www.powr.io/powr.js?platform=bootstrap"></script>
           </div>
         </div>
       </div>

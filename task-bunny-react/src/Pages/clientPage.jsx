@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ClientProfilePic from "../Assets/AgentProfilePic.png";
+import ClientProfilePic from "../Assets/client.jpg";
 import Axios from "axios";
 import JWTD from "jwt-decode";
 import { useEffect } from "react";
@@ -85,7 +85,9 @@ export default function ClientPage(props) {
                 <p className="card-text">
                   I need a trusted service provider to delegate my work.
                 </p>
-                <span className="badge badge-success"> Rating : 5.0</span>
+                <span className="badge badge-dark">
+                  <div className="display-5">Rating : 5.0</div>
+                </span>
               </div>
             </div>
           </div>
@@ -97,19 +99,17 @@ export default function ClientPage(props) {
                   class="list-group-item d-flex justify-content-between align-items-center"
                 >
                   {task.name}
-                  <span className="badge badge-primary badge-pill">
-                    Category:{task.category}
+                  <span className="badge badge-info badge-pill">
+                    <div className="display-5"> Category : {task.category}</div>
                   </span>
-                  <span class="badge badge-primary badge-pill">
-                    Status:{task.status}
+                  <span class="badge badge-success badge-pill">
+                    <div className="display-5">Status : {task.status} </div>
                   </span>
                 </li>
               ))}
             </ul>
             <div className="text-center"></div>
           </div>
-          <div className="powr-reviews" id="6ba27d8f_1592370663"></div>
-          <script src="https://www.powr.io/powr.js?platform=bootstrap"></script>
         </div>
       </div>
     </React.Fragment>

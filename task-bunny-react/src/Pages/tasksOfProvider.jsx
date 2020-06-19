@@ -30,7 +30,7 @@ function ProviderPage(props) {
       .then((result) => {
         console.log(result.data.username);
         props.history.push({
-          pathname: "/ROLE_CLIENT",
+          pathname: "/feedback",
           state: { username: result.data.username },
         });
       })
@@ -41,7 +41,7 @@ function ProviderPage(props) {
   return (
     <React.Fragment>
       <div class="container-fluid">
-        <div className="display-4">Provider Pending Tasks</div>
+        <div className="display-4">Pending Tasks</div>
         <div class="row">
           <div class="col-lg">
             <ul class="list-group m-2">
@@ -53,10 +53,10 @@ function ProviderPage(props) {
                       class="list-group-item d-flex justify-content-between align-items-center"
                     >
                       {name.name}
-                      <span class="badge badge-primary badge-pill">
+                      <span class="badge badge-info badge-pill">
                         Category : {name.category}
                       </span>
-                      <span class="badge badge-primary badge-pill">
+                      <span class="badge badge-success badge-pill">
                         Status : {name.status}
                       </span>
                       <button
@@ -75,10 +75,10 @@ function ProviderPage(props) {
                       class="list-group-item d-flex justify-content-between align-items-center"
                     >
                       {name.name}
-                      <span class="badge badge-primary badge-pill">
+                      <span class="badge badge-info badge-pill">
                         Category : {name.category}
                       </span>
-                      <span class="badge badge-primary badge-pill">
+                      <span class="badge badge-secondary badge-pill">
                         Status : {name.status}
                       </span>
                       <button

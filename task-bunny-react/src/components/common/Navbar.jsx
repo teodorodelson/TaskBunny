@@ -47,6 +47,14 @@ export default function Navbar() {
           <NavLink className="nav-link" to={role} activeStyle={activeStyle}>
             {greeting}
           </NavLink>
+
+          <NavLink
+            className="nav-link"
+            to="/feedback"
+            activeStyle={activeStyle}
+          >
+            Feedback
+          </NavLink>
           <NavLink
             to="/"
             className="nav-link"
